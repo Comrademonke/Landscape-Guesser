@@ -10,7 +10,7 @@ import javafx.scene.media.MediaPlayer;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 
-public class MusicPlayerController {
+public class LevelsController {
   // <Button fx:id="switchToCounterButton" layoutX="458.0" layoutY="31.0" mnemonicParsing="false"
   // onAction="#switchToCounter" text="Switch to Counter" />
   //   <Button fx:id="playFirstSongButton" layoutX="93.0" layoutY="306.0" mnemonicParsing="false"
@@ -35,7 +35,7 @@ public class MusicPlayerController {
     System.out.println("switch scenes");
     Button button = (Button) event.getSource();
     Scene sceneButtonIsIn = button.getScene();
-    sceneButtonIsIn.setRoot(SceneManager.getUiRoot(AppUi.COUNTER));
+    sceneButtonIsIn.setRoot(SceneManager.getUiRoot(AppUi.LOADING_PAGE));
     if (mediaPlayer != null) {
       mediaPlayer.stop();
     }
