@@ -25,7 +25,7 @@ public class App extends Application {
     SceneManager.addUi(AppUi.LOADING_PAGE, loadFXML("loadingPage"));
     SceneManager.addUi(AppUi.LEVELS, loadFXML("levels"));
 
-    scene = new Scene(SceneManager.getUiRoot(AppUi.LEVELS), 640, 480);
+    scene = new Scene(SceneManager.getUiRoot(AppUi.LEVELS), 1537, 800);
     stage.setScene(scene);
     stage.show();
   }
