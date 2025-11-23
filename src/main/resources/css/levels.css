@@ -1,0 +1,33 @@
+.button {
+    -fx-background-color: linear-gradient(to bottom, #44c767 0%, #5cbf2a 100%);
+    -fx-background-radius: 15px;
+    -fx-font-size: 50px;
+    -fx-border-color: #03fa1c;
+    -fx-border-radius: 15px;
+    -fx-border-width: 1px;
+    -fx-text-fill: #000000;
+    -fx-font-family: "futura";
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 3, 0, 0, 1);
+}
+
+.button:hover {
+    -fx-background-color: linear-gradient(to bottom, #5cbf2a 0%, #44c767 100%);
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 5, 0, 0, 2);
+}
+
+.button:disabled {
+  -fx-opacity: 1.0;
+  -fx-cursor: default;
+}
+
+.button:pressed {
+    -fx-translate-y: 1px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 2, 0, 0, 1);
+}
+
+.label {
+    -fx-font-family: "futura";
+    -fx-font-weight: bold;
+    
+}

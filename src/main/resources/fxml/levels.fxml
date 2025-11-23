@@ -15,26 +15,26 @@
             <Image url="@../images/background.jpg" />
          </image>
       </ImageView>
-      <Label fx:id="titleLabel" alignment="CENTER" layoutX="-1.0" layoutY="28.0" prefHeight="171.0" prefWidth="1534.0" text="Select level" textFill="#00ff44">
+      <Label fx:id="titleLabel" alignment="CENTER" layoutX="-1.0" layoutY="28.0" prefHeight="171.0" prefWidth="1534.0" stylesheets="@../css/levels.css" text="Select level" textFill="#00ff44">
          <font>
             <Font size="100.0" />
          </font>
       </Label>
-      <Button fx:id="levelOneButton" layoutX="147.8333" layoutY="301.0" mnemonicParsing="false" onAction="#onSwitchToLevelOne" prefHeight="130.0" prefWidth="130.0"  text="1">
+      <Button fx:id="levelOneButton" layoutX="147.8333" layoutY="301.0" mnemonicParsing="false" onAction="#onSwitchToLevelOne" prefHeight="130.0" prefWidth="130.0" stylesheets="@../css/levels.css" text="1">
          <font>
             <Font size="50.0" />
          </font>
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
-      <Button fx:id="levelTwoButton" layoutX="425.666" layoutY="301.0" mnemonicParsing="false" onAction="#onSwitchToLevelTwo"  prefHeight="130.0" prefWidth="130.0"  text="2">
+      <Button fx:id="levelTwoButton" layoutX="425.666" layoutY="301.0" mnemonicParsing="false" onAction="#onSwitchToLevelTwo" prefHeight="130.0" prefWidth="130.0" stylesheets="@../css/levels.css" text="2">
          <font>
             <Font size="50.0" />
          </font>
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
-      <Button fx:id="levelThreeButton" layoutX="703.499" layoutY="301.0" mnemonicParsing="false" onAction="#onSwitchToLevelThree"  prefHeight="130.0" prefWidth="130.0"  text="3">
+      <Button fx:id="levelThreeButton" layoutX="703.499" layoutY="301.0" mnemonicParsing="false" onAction="#onSwitchToLevelThree" prefHeight="130.0" prefWidth="130.0" stylesheets="@../css/levels.css" text="3">
          <font>
             <Font size="50.0" />
          </font>

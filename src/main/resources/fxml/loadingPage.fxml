@@ -15,18 +15,23 @@
             <Image url="@../images/background.jpg" />
          </image>
       </ImageView>
-      <ProgressBar fx:id="loadingBar" layoutX="135.0" layoutY="657.0" prefHeight="45.0" prefWidth="1300.0" progress="0.0" style="-fx-border-color: white; -fx-border-width: 4;" />
-      <Button fx:id="switchButton" contentDisplay="RIGHT" disable="true" layoutX="559.0" layoutY="466.0" mnemonicParsing="false" onAction="#switchScene" prefHeight="107.0" prefWidth="406.0" text="Explore">
+            <Label fx:id="loadingLabel" alignment="CENTER" layoutX="692.0" layoutY="724.0" prefHeight="60.0" prefWidth="169.0" stylesheets="@../css/loadingPage.css" text="loading..." textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
+      <ProgressBar fx:id="loadingBar" layoutX="135.0" layoutY="657.0" prefHeight="45.0" prefWidth="1300.0" progress="0.0" style="-fx-border-color: white; -fx-border-width: 4;" stylesheets="@../css/loadingPage.css" />
+      <Button fx:id="switchButton" contentDisplay="RIGHT" disable="true" layoutX="559.0" layoutY="466.0" mnemonicParsing="false" onAction="#switchScene" prefHeight="107.0" prefWidth="406.0" stylesheets="@../css/loadingPage.css" text="Explore">
          <font>
             <Font size="20.0" />
          </font></Button>
 
-      <Label fx:id="landscapeLabel" alignment="CENTER" layoutX="2.0" layoutY="82.0" prefHeight="171.0" prefWidth="1534.0" text="Landscape" textFill="#00ff44">
+      <Label fx:id="landscapeLabel" alignment="CENTER" layoutX="2.0" layoutY="82.0" prefHeight="171.0" prefWidth="1534.0" stylesheets="@../css/loadingPage.css" text="Landscape" textFill="#00ff44">
          <font>
             <Font size="150.0" />
          </font>
       </Label>
-      <Label fx:id="guesserLabel" alignment="CENTER" layoutX="2.0" layoutY="251.0" prefHeight="101.0" prefWidth="1533.0" text="Guesser" textFill="WHITE">
+      <Label fx:id="guesserLabel" alignment="CENTER" layoutX="2.0" layoutY="251.0" prefHeight="101.0" prefWidth="1533.0" stylesheets="@../css/loadingPage.css" text="Guesser" textFill="WHITE">
          <font>
             <Font size="96.0" />
          </font>

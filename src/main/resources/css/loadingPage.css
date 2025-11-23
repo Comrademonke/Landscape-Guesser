@@ -1,0 +1,40 @@
+.button {
+    -fx-background-color: linear-gradient(to bottom, #44c767 0%, #5cbf2a 100%);
+    -fx-background-radius: 15px;
+    -fx-border-color: #03fa1c;
+    -fx-border-radius: 15px;
+    -fx-border-width: 1px;
+    -fx-text-fill: #000000;
+    -fx-font-family: "futura";
+    -fx-padding: 0px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 3, 0, 0, 1);
+}
+
+.button:hover {
+    -fx-background-color: linear-gradient(to bottom, #5cbf2a 0%, #44c767 100%);
+    -fx-font-size: 36px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 5, 0, 0, 2);
+}
+
+.button:pressed {
+    -fx-translate-y: 1px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 2, 0, 0, 1);
+}
+
+.progress-bar .bar {
+    -fx-background-color: linear-gradient(to right, #44c767, #5cbf2a); /* Gradient for the progress */
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+}
+
+.progress-bar > .track {
+    -fx-background-color: transparent; /* Light gray for the track */
+    
+}
+
+.label {
+    -fx-font-family: "futura";
+    -fx-font-weight: bold;
+    
+}
