@@ -1,6 +1,8 @@
 package nz.ac.auckland.se206.controllers;
 
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import javafx.application.Platform;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
@@ -16,7 +18,6 @@ import javafx.scene.paint.Color;
 import javafx.scene.transform.Rotate;
 import javax.imageio.ImageIO;
 import nz.ac.auckland.se206.App;
-import nz.ac.auckland.se206.Util.EquirectangularToCubic;
 import org.fxyz3d.scene.Skybox;
 
 public class GUI360JFxController {
@@ -36,7 +37,8 @@ public class GUI360JFxController {
   private Double anchorAngleY;
 
   private Skybox sky;
-  private BufferedImage[] skyboxImages;
+  private BufferedImage[] skyBoxImages;
+  private BufferedImage[] skyBoxImageLevel1 = new BufferedImage[6];
 
   private javafx.scene.image.Image[] skyboxImagesFx;
 
@@ -145,12 +147,36 @@ public class GUI360JFxController {
         new Task<Void>() {
           @Override
           protected Void call() throws Exception {
-            java.net.URL imageUrl = getClass().getResource("/images/Otorohanga.jpg");
-            BufferedImage image = ImageIO.read(imageUrl);
-            skyboxImages = EquirectangularToCubic.processImage(image);
+            // java.net.URL imageUrl = getClass().getResource("/images/Otorohanga.jpg");
+            // BufferedImage image = ImageIO.read(imageUrl);
+            // skyBoxImages = EquirectangularToCubic.processImage(image);
 
-            openPanoramaImage(skyboxImages);
-            updateProgress(100.0, 100.0);
+            // int i = 0;
+            // for (BufferedImage imagee : skyboxImages) {
+            //   saveBufferedImage(
+            //       imagee,
+            //       "jpg",
+            //       "src/main/resources/images/panoramas/levelOnePanorama" + i + ".jpg");
+            //   i++;
+            // }
+
+            int totalSteps = 6;
+            int currentStep = 0;
+
+            for (int i = 0; i < 6; i++) {
+              BufferedImage image =
+                  ImageIO.read(
+                      getClass().getResource("/images/panoramas/levelOnePanorama" + i + ".jpg"));
+              skyBoxImageLevel1[i] = image;
+
+              currentStep++;
+
+              double progress = currentStep / (double) totalSteps;
+              updateProgress(progress * 100, 100.0);
+            }
+
+            openPanoramaImage(skyBoxImageLevel1);
+            // updateProgress(100.0, 100.0);
             return null;
           }
         };
@@ -176,13 +202,24 @@ public class GUI360JFxController {
         });
   }
 
+  public static void saveBufferedImage(BufferedImage image, String formatName, String filePath) {
+    try {
+      File outputFile = new File(filePath);
+      ImageIO.write(image, formatName, outputFile);
+      System.out.println("Image successfully saved to: " + filePath);
+    } catch (IOException e) {
+      System.err.println("Error saving image: " + e.getMessage());
+      e.printStackTrace();
+    }
+  }
+
   public void openPanoramaImage(BufferedImage[] image) {
-    skyboxImages = image;
+    skyBoxImages = image;
 
     skyboxImagesFx = new javafx.scene.image.Image[6];
 
     for (int i = 0; i < 6; i++) {
-      skyboxImagesFx[i] = SwingFXUtils.toFXImage(skyboxImages[i], null);
+      skyboxImagesFx[i] = SwingFXUtils.toFXImage(skyBoxImages[i], null);
     }
 
     sky =
