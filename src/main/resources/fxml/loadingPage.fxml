@@ -21,7 +21,7 @@
          </font>
       </Label>
       <ProgressBar fx:id="loadingBar" layoutX="135.0" layoutY="657.0" prefHeight="45.0" prefWidth="1300.0" progress="0.0" style="-fx-border-color: white; -fx-border-width: 4;" stylesheets="@../css/loadingPage.css" />
-      <Button fx:id="switchButton" contentDisplay="RIGHT" disable="true" layoutX="559.0" layoutY="466.0" mnemonicParsing="false" onAction="#switchScene" prefHeight="107.0" prefWidth="406.0" stylesheets="@../css/loadingPage.css" text="Explore">
+      <Button fx:id="switchButton" contentDisplay="RIGHT" layoutX="559.0" layoutY="466.0" mnemonicParsing="false" onAction="#switchScene" prefHeight="107.0" prefWidth="406.0" stylesheets="@../css/loadingPage.css" text="Explore">
          <font>
             <Font size="20.0" />
          </font></Button>

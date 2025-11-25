@@ -2,11 +2,8 @@ package nz.ac.auckland.se206.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import nz.ac.auckland.se206.App;
-import nz.ac.auckland.se206.SceneManager;
-import nz.ac.auckland.se206.SceneManager.AppUi;
 
 public class LevelsController {
 
@@ -19,14 +16,6 @@ public class LevelsController {
   private void initialize() {
     System.out.println(
         "************* Initialising Music Controller ************************" + this);
-  }
-
-  @FXML
-  private void switchToCounter(ActionEvent event) {
-    System.out.println("switch scenes");
-    Button button = (Button) event.getSource();
-    Scene sceneButtonIsIn = button.getScene();
-    sceneButtonIsIn.setRoot(SceneManager.getUiRoot(AppUi.LOADING_PAGE));
   }
 
   @FXML
