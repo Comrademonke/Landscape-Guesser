@@ -62,6 +62,9 @@ public class App extends Application {
     if (stage != null && levelScene != null) {
       stage.setScene(levelScene);
     }
+    if (buttonPane != null) {
+      buttonPane.setVisible(false);
+    }
   }
 
   public void switchToViewerScene() {
@@ -126,6 +129,8 @@ public class App extends Application {
     // Create transparent pane for button
     buttonPane = new Pane(switchButton);
     buttonPane.setStyle("-fx-background-color: transparent;");
+
+    buttonPane.setVisible(true);
 
     Scene buttonScene = new Scene(buttonPane, 300, 53);
     buttonScene.setFill(null);
