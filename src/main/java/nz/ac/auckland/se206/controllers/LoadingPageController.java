@@ -56,7 +56,7 @@ public class LoadingPageController {
     mediaPlayer = new MediaPlayer(media);
 
     mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
-    mediaPlayer.setVolume(0.3);
+    mediaPlayer.setVolume(0.0);
 
     mediaPlayer.play();
   }
