@@ -1,6 +1,7 @@
 package nz.ac.auckland.se206.controllers;
 
 import java.awt.image.BufferedImage;
+import javafx.application.Platform;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.concurrent.Task;
@@ -14,6 +15,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.transform.Rotate;
 import javax.imageio.ImageIO;
+import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.Util.EquirectangularToCubic;
 import org.fxyz3d.scene.Skybox;
 
@@ -136,22 +138,34 @@ public class GUI360JFxController {
   }
 
   public void setUpPanoramas() {
+    LoadingPageController loadingPageController = App.getInstance().getLoadingController();
 
     // Set up a task to load other panoramas
     Task<Void> panoramas =
         new Task<Void>() {
           @Override
           protected Void call() throws Exception {
-
             java.net.URL imageUrl = getClass().getResource("/images/Otorohanga.jpg");
             BufferedImage image = ImageIO.read(imageUrl);
             skyboxImages = EquirectangularToCubic.processImage(image);
 
             openPanoramaImage(skyboxImages);
-
+            updateProgress(100.0, 100.0);
             return null;
           }
         };
+
+    panoramas
+        .progressProperty()
+        .addListener(
+            (obs, oldVal, newVal) -> {
+              if (loadingPageController != null) {
+                Platform.runLater(
+                    () -> {
+                      loadingPageController.progressProperty().set(newVal.doubleValue());
+                    });
+              }
+            });
 
     Thread panoramaLoader = new Thread(panoramas);
     panoramaLoader.start();

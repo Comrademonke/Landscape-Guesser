@@ -9,12 +9,14 @@ import javafx.scene.Scene;
 import javafx.scene.SceneAntialiasing;
 import javafx.stage.Stage;
 import nz.ac.auckland.se206.controllers.GUI360JFxController;
+import nz.ac.auckland.se206.controllers.LoadingPageController;
 
 public class App extends Application {
   private static App instance;
   private Scene loadingPageScene;
   private Scene levelScene;
   private Scene viewerScene;
+  private LoadingPageController loadingPageController;
 
   public static void main(String[] args) {
     launch();
@@ -33,6 +35,7 @@ public class App extends Application {
     loadingPageScene = new Scene(loadingPageRoot);
 
     GUI360JFxController GUI360JFxController = new GUI360JFxController();
+
     Parent levelsRoot = loadFXML("levels");
     levelScene = new Scene(levelsRoot, 1537, 800);
 
@@ -75,5 +78,13 @@ public class App extends Application {
 
   public static App getInstance() {
     return instance;
+  }
+
+  public void setLoadingController(LoadingPageController controller) {
+    this.loadingPageController = controller;
+  }
+
+  public LoadingPageController getLoadingController() {
+    return loadingPageController;
   }
 }
