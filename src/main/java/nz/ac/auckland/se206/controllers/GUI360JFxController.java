@@ -1,5 +1,7 @@
 package nz.ac.auckland.se206.controllers;
 
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -164,10 +166,11 @@ public class GUI360JFxController {
             int currentStep = 0;
 
             for (int i = 0; i < 6; i++) {
-              BufferedImage image =
+              BufferedImage originalImage =
                   ImageIO.read(
                       getClass().getResource("/images/panoramas/levelOnePanorama" + i + ".jpg"));
-              skyBoxImageLevel1[i] = image;
+              BufferedImage compressedImage = scaleImage(originalImage, 0.5);
+              skyBoxImageLevel1[i] = compressedImage;
 
               currentStep++;
 
@@ -200,6 +203,32 @@ public class GUI360JFxController {
         event -> {
           System.out.println("panorama loading completed");
         });
+  }
+
+  private BufferedImage scaleImage(BufferedImage original, double scale) {
+    int newWidth = (int) (original.getWidth() * scale);
+    int newHeight = (int) (original.getHeight() * scale);
+    BufferedImage scaled = new BufferedImage(newWidth, newHeight, original.getType());
+
+    Graphics2D smoothScaled = scaled.createGraphics();
+
+    // Bilinear to smooth out image
+    smoothScaled.setRenderingHint(
+        RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
+    // Higher quality over scaling speed
+    // Remove if images are taking too long
+    smoothScaled.setRenderingHint(
+        RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
+
+    // Antialiasing to produce less jagged edges
+    smoothScaled.setRenderingHint(
+        RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+
+    // Draw the scaled image
+    smoothScaled.drawImage(original, 0, 0, newWidth, newHeight, null);
+    smoothScaled.dispose();
+
+    return scaled;
   }
 
   public static void saveBufferedImage(BufferedImage image, String formatName, String filePath) {
