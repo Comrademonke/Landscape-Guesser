@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.scene.AmbientLight;
 import javafx.scene.Group;
 import javafx.scene.PerspectiveCamera;
+import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.transform.Rotate;
@@ -27,6 +28,10 @@ public class GUI360JFxController {
   private DoubleProperty anglex;
   private DoubleProperty angley;
   private DoubleProperty FOV;
+  private Double anchorX;
+  private Double anchorY;
+  private Double anchorAngleX;
+  private Double anchorAngleY;
 
   private Skybox sky;
   private BufferedImage[] skyboxImages;
@@ -48,6 +53,7 @@ public class GUI360JFxController {
     camera.setFarClip(10000.0);
 
     setupCamera();
+    setupMouseControls();
     setUpPanoramas();
   }
 
@@ -81,6 +87,52 @@ public class GUI360JFxController {
     rotx.angleProperty().bind(anglex);
     roty.angleProperty().bind(angley);
     atlas.getTransforms().addAll(rotx, roty);
+  }
+
+  private void setupMouseControls() {
+    Scene scene = root3D.getScene();
+    if (scene != null) {
+      setupSceneMouseControls(scene);
+    } else {
+      root3D
+          .sceneProperty()
+          .addListener(
+              (observable, oldScene, newScene) -> {
+                if (newScene != null) {
+                  setupSceneMouseControls(newScene);
+                }
+              });
+    }
+  }
+
+  private void setupSceneMouseControls(Scene scene) {
+    // Set up x and y mouse movement
+    scene.setOnMousePressed(
+        event -> {
+          anchorX = event.getSceneX();
+          anchorY = event.getSceneY();
+          anchorAngleX = anglex.get();
+          anchorAngleY = angley.get();
+        });
+
+    scene.setOnMouseDragged(
+        event -> {
+          if (anchorX != null && anchorY != null) {
+            anglex.set(anchorAngleX + (anchorY - event.getSceneY()) * FOV.getValue() / 600.0);
+            angley.set(anchorAngleY + (anchorX - event.getSceneX()) * FOV.getValue() / 600.0);
+          }
+        });
+
+    // Set up mouse zoom
+    scene.setOnScroll(
+        event -> {
+          double newFOV = FOV.getValue() - (event.getDeltaX() + event.getDeltaY()) / 20.0;
+          FOV.setValue(returnInsideRange(newFOV, 20.0, 100.0));
+        });
+  }
+
+  private Double returnInsideRange(Double value, Double min, Double max) {
+    return Math.min(Math.max(value, min), max);
   }
 
   public void setUpPanoramas() {
@@ -121,12 +173,12 @@ public class GUI360JFxController {
 
     sky =
         new Skybox(
-            skyboxImagesFx[4], // Up
-            skyboxImagesFx[5], // Down
-            skyboxImagesFx[3], // Front
-            skyboxImagesFx[1], // Back
-            skyboxImagesFx[0], // Left
-            skyboxImagesFx[2], // Right
+            skyboxImagesFx[4], // Bottom
+            skyboxImagesFx[5], // Top
+            skyboxImagesFx[3], // Right
+            skyboxImagesFx[1], // Left
+            skyboxImagesFx[2], // Front
+            skyboxImagesFx[0], // Back
             1000,
             camera);
 
