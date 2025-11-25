@@ -6,7 +6,8 @@ import javafx.scene.Parent;
 public class SceneManager {
   public enum AppUi {
     LEVELS,
-    LOADING_PAGE
+    LOADING_PAGE,
+    VIEWER
   }
 
   private static HashMap<AppUi, Parent> sceneMap = new HashMap<>();

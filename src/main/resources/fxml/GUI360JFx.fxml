@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.AmbientLight?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.PerspectiveCamera?>
+
+<Group fx:id="root3D" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.GUI360JFxController">    
+    <PerspectiveCamera fx:id="camera" />
+    <AmbientLight fx:id="light" color="WHITE" />
+    <Group fx:id="atlas" /> 
+</Group>

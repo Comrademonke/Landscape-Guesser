@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 
@@ -50,9 +51,9 @@ public class LevelsController {
   }
 
   public void switchToLevel(String level, int numberLevel, ActionEvent event) {
-
-    Button button = (Button) event.getSource();
-    Scene sceneButtonIsIn = button.getScene();
-    sceneButtonIsIn.setRoot(SceneManager.getUiRoot(AppUi.LOADING_PAGE));
+    App app = App.getInstance();
+    if (app != null) {
+      app.switchToViewerScene();
+    }
   }
 }
