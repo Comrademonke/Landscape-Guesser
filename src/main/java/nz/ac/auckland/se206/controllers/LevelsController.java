@@ -12,10 +12,16 @@ public class LevelsController {
   @FXML private Button levelTwoButton;
   @FXML private Button levelThreeButton;
 
+  private GUI360JFxController GUI360Controller;
+
   @FXML
   private void initialize() {
     System.out.println(
         "************* Initialising Music Controller ************************" + this);
+  }
+
+  public void setGUI360Controller(GUI360JFxController GUI360Controller) {
+    this.GUI360Controller = GUI360Controller;
   }
 
   @FXML
@@ -40,6 +46,9 @@ public class LevelsController {
   }
 
   public void switchToLevel(String level, int numberLevel, ActionEvent event) {
+
+    GUI360Controller.panoramaPicker(level);
+
     App app = App.getInstance();
     if (app != null) {
       app.switchToViewerScene();

@@ -12,6 +12,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import nz.ac.auckland.se206.controllers.GUI360JFxController;
+import nz.ac.auckland.se206.controllers.LevelsController;
 import nz.ac.auckland.se206.controllers.LoadingPageController;
 
 public class App extends Application {
@@ -43,8 +44,13 @@ public class App extends Application {
 
     GUI360JFxController GUI360JFxController = new GUI360JFxController();
 
-    Parent levelsRoot = loadFXML("levels");
+    FXMLLoader levelsLoader = new FXMLLoader(App.class.getResource("/fxml/levels.fxml"));
+    Parent levelsRoot = levelsLoader.load();
+    LevelsController levelsController = levelsLoader.getController();
     levelScene = new Scene(levelsRoot, 1537, 800);
+
+    // Inject controller
+    levelsController.setGUI360Controller(GUI360JFxController);
 
     GUI360JFxController.initialize();
 

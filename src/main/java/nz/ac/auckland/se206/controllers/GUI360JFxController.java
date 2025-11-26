@@ -150,6 +150,7 @@ public class GUI360JFxController {
         new Task<Void>() {
           @Override
           protected Void call() throws Exception {
+            // Storing images here
             // java.net.URL imageUrl = getClass().getResource("/images/Otorohanga.jpg");
             // BufferedImage image = ImageIO.read(imageUrl);
             // skyBoxImages = EquirectangularToCubic.processImage(image);
@@ -192,8 +193,8 @@ public class GUI360JFxController {
               updateProgress(progress * 100, 100.0);
             }
 
-            openPanoramaImage(skyBoxImageLevel2);
-            // updateProgress(100.0, 100.0);
+            skyBoxImages = skyBoxImageLevel1;
+            openPanoramaImage();
             return null;
           }
         };
@@ -256,33 +257,70 @@ public class GUI360JFxController {
     }
   }
 
-  public void openPanoramaImage(BufferedImage[] image) {
-    skyBoxImages = image;
+  public void openPanoramaImage() {
 
-    skyboxImagesFx = new javafx.scene.image.Image[6];
+    Task<Void> openPanoramas =
+        new Task<Void>() {
+          @Override
+          protected Void call() throws Exception {
+            Platform.runLater(
+                () -> {
+                  try {
+                    skyboxImagesFx = new javafx.scene.image.Image[6];
 
-    for (int i = 0; i < 6; i++) {
-      skyboxImagesFx[i] = SwingFXUtils.toFXImage(skyBoxImages[i], null);
+                    for (int i = 0; i < 6; i++) {
+                      skyboxImagesFx[i] = SwingFXUtils.toFXImage(skyBoxImages[i], null);
+                    }
+
+                    sky =
+                        new Skybox(
+                            skyboxImagesFx[4], // Bottom
+                            skyboxImagesFx[5], // Top
+                            skyboxImagesFx[3], // Right
+                            skyboxImagesFx[1], // Left
+                            skyboxImagesFx[2], // Front
+                            skyboxImagesFx[0], // Back
+                            1000,
+                            camera);
+
+                    sky.setTranslateX(0);
+                    sky.setTranslateY(0);
+                    sky.setTranslateZ(0);
+                  } catch (Exception e) {
+                    System.out.println("Error creating skybox: " + e.getMessage());
+                    e.printStackTrace();
+                  }
+                });
+            return null;
+          }
+        };
+
+    Thread panoramaLoader = new Thread(openPanoramas);
+    panoramaLoader.start();
+
+    openPanoramas.setOnSucceeded(
+        event -> {
+          Platform.runLater(
+              () -> {
+                System.out.println(
+                    "Skybox created successfully - you should be inside the cube now!");
+
+                atlas.getChildren().clear();
+                atlas.getChildren().add(sky);
+              });
+        });
+  }
+
+  public void panoramaPicker(String panorama) {
+    // Set up the next panorama to be loaded
+    switch (panorama) {
+      case "level1":
+        skyBoxImages = skyBoxImageLevel1;
+        break;
+      case "level2":
+        skyBoxImages = skyBoxImageLevel2;
+        break;
     }
-
-    sky =
-        new Skybox(
-            skyboxImagesFx[4], // Bottom
-            skyboxImagesFx[5], // Top
-            skyboxImagesFx[3], // Right
-            skyboxImagesFx[1], // Left
-            skyboxImagesFx[2], // Front
-            skyboxImagesFx[0], // Back
-            1000,
-            camera);
-
-    sky.setTranslateX(0);
-    sky.setTranslateY(0);
-    sky.setTranslateZ(0);
-
-    atlas.getChildren().clear();
-    atlas.getChildren().add(sky);
-
-    System.out.println("Skybox created successfully - you should be inside the cube now!");
+    openPanoramaImage();
   }
 }
