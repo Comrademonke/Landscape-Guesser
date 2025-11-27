@@ -14,18 +14,18 @@
             <Image url="@../images/background.jpg" />
          </image>
       </ImageView>
-      <Pane fx:id="mapDisplay" layoutX="51.0" layoutY="155.0" prefHeight="587.0" prefWidth="1435.0" />
-      <Button fx:id="finalGuessButton" layoutX="515.0" layoutY="681.0" mnemonicParsing="false" onAction="#onFinalGuess" prefHeight="93.0" prefWidth="489.0" text="FINALISE GUESS">
+      <Pane fx:id="mapDisplay" layoutX="51.0" layoutY="155.0" prefHeight="587.0" prefWidth="1435.0" styleClass="pane" stylesheets="@guessingRoom.css" />
+      <Button fx:id="finalGuessButton" layoutX="515.0" layoutY="681.0" mnemonicParsing="false" onAction="#onFinalGuess" prefHeight="93.0" prefWidth="489.0" stylesheets="@guessingRoom.css" text="FINALISE GUESS">
          <font>
             <Font size="19.0" />
          </font>
       </Button>
-      <Label fx:id="titleLabel" alignment="CENTER" layoutX="7.0" layoutY="5.0" prefHeight="171.0" prefWidth="1534.0" text="Guess the location!" textFill="#00ff44">
+      <Label fx:id="titleLabel" alignment="CENTER" layoutX="7.0" layoutY="5.0" prefHeight="171.0" prefWidth="1534.0" stylesheets="@guessingRoom.css" text="Guess the location!" textFill="#00ff44">
          <font>
             <Font size="100.0" />
          </font>
       </Label>
-      <Button fx:id="returnButton" layoutX="48.0" layoutY="54.0" mnemonicParsing="false" onAction="#onReturnSwitch" prefHeight="78.0" prefWidth="185.0" text="Go Back">
+      <Button fx:id="returnButton" layoutX="48.0" layoutY="54.0" mnemonicParsing="false" onAction="#onReturnSwitch" prefHeight="78.0" prefWidth="185.0" styleClass="back-button" stylesheets="@guessingRoom.css" text="Go Back">
          <font>
             <Font size="19.0" />
          </font>
