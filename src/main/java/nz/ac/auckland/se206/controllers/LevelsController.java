@@ -26,21 +26,21 @@ public class LevelsController {
 
   @FXML
   private void onSwitchToLevelOne(ActionEvent event) {
-    levelOneButton.setDisable(true);
+    // levelOneButton.setDisable(true);
 
     switchToLevel("level1", 1, event);
   }
 
   @FXML
   private void onSwitchToLevelTwo(ActionEvent event) {
-    levelTwoButton.setDisable(true);
+    // levelTwoButton.setDisable(true);
 
     switchToLevel("level2", 2, event);
   }
 
   @FXML
   private void onSwitchToLevelThree(ActionEvent event) {
-    levelThreeButton.setDisable(true);
+    // levelThreeButton.setDisable(true);
 
     switchToLevel("level3", 3, event);
   }

@@ -42,6 +42,7 @@ public class GUI360JFxController {
   private BufferedImage[] skyBoxImages;
   private BufferedImage[] skyBoxImageLevel1 = new BufferedImage[6];
   private BufferedImage[] skyBoxImageLevel2 = new BufferedImage[6];
+  private BufferedImage[] skyBoxImageLevel3 = new BufferedImage[6];
 
   private javafx.scene.image.Image[] skyboxImagesFx;
 
@@ -160,11 +161,11 @@ public class GUI360JFxController {
             //   saveBufferedImage(
             //       imagee,
             //       "jpg",
-            //       "src/main/resources/images/panoramas/levelTwoPanorama" + i + ".jpg");
+            //       "src/main/resources/images/panoramas/levelThreePanorama" + i + ".jpg");
             //   i++;
             // }
 
-            int totalSteps = 12;
+            int totalSteps = 18;
             int currentStep = 0;
 
             for (int i = 0; i < 6; i++) {
@@ -186,6 +187,19 @@ public class GUI360JFxController {
                       getClass().getResource("/images/panoramas/levelTwoPanorama" + i + ".jpg"));
               BufferedImage compressedImage = scaleImage(originalImage, 0.5);
               skyBoxImageLevel2[i] = compressedImage;
+
+              currentStep++;
+
+              double progress = currentStep / (double) totalSteps;
+              updateProgress(progress * 100, 100.0);
+            }
+
+            for (int i = 0; i < 6; i++) {
+              BufferedImage originalImage =
+                  ImageIO.read(
+                      getClass().getResource("/images/panoramas/levelThreePanorama" + i + ".jpg"));
+              BufferedImage compressedImage = scaleImage(originalImage, 0.5);
+              skyBoxImageLevel3[i] = compressedImage;
 
               currentStep++;
 
@@ -319,6 +333,9 @@ public class GUI360JFxController {
         break;
       case "level2":
         skyBoxImages = skyBoxImageLevel2;
+        break;
+      case "level3":
+        skyBoxImages = skyBoxImageLevel3;
         break;
     }
     openPanoramaImage();
