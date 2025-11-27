@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1537.0" style="-fx-background-color: #252929;" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.GuessingRoomController">
+   <children>
+      <ImageView fitHeight="894.0" fitWidth="1538.0" layoutX="2.0" opacity="0.4" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/background.jpg" />
+         </image>
+      </ImageView>
+      <Pane fx:id="mapDisplay" layoutX="51.0" layoutY="155.0" prefHeight="587.0" prefWidth="1435.0" />
+      <Button fx:id="finalGuessButton" layoutX="515.0" layoutY="681.0" mnemonicParsing="false" onAction="#onFinalGuess" prefHeight="93.0" prefWidth="489.0" text="FINALISE GUESS">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Button>
+      <Label fx:id="titleLabel" alignment="CENTER" layoutX="7.0" layoutY="5.0" prefHeight="171.0" prefWidth="1534.0" text="Guess the location!" textFill="#00ff44">
+         <font>
+            <Font size="100.0" />
+         </font>
+      </Label>
+      <Button fx:id="returnButton" layoutX="48.0" layoutY="54.0" mnemonicParsing="false" onAction="#onReturnSwitch" prefHeight="78.0" prefWidth="185.0" text="Go Back">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Button>
+   </children>
+</Pane>

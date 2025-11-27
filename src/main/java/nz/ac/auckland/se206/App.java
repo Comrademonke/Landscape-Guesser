@@ -20,6 +20,7 @@ public class App extends Application {
   private Scene loadingPageScene;
   private Scene levelScene;
   private Scene viewerScene;
+  private Scene guessingRoomScene;
   private LoadingPageController loadingPageController;
 
   private Stage buttonStage;
@@ -41,6 +42,11 @@ public class App extends Application {
 
     Parent loadingPageRoot = loadFXML("loadingPage");
     loadingPageScene = new Scene(loadingPageRoot);
+
+    FXMLLoader guessingRoomLoader =
+        new FXMLLoader(App.class.getResource("/fxml/guessingRoom.fxml"));
+    Parent guessingRoomRoot = guessingRoomLoader.load();
+    guessingRoomScene = new Scene(guessingRoomRoot);
 
     GUI360JFxController GUI360JFxController = new GUI360JFxController();
 
@@ -73,11 +79,19 @@ public class App extends Application {
     }
   }
 
+  public void switchToGuessingRoomScene() {
+    Stage stage = getCurrentStage();
+    if (stage != null && guessingRoomScene != null) {
+      stage.setScene(guessingRoomScene);
+    }
+    buttonPane.setVisible(false);
+  }
+
   public void switchToViewerScene() {
     Stage stage = getCurrentStage();
     if (stage != null && viewerScene != null) {
       stage.setScene(viewerScene);
-      createOverlayButton(stage, "Make a guess!", this::switchToLevelScene);
+      createOverlayButton(stage, "Make a guess!", this::switchToGuessingRoomScene);
     }
   }
 
@@ -89,6 +103,8 @@ public class App extends Application {
       return (Stage) levelScene.getWindow();
     } else if (viewerScene != null && viewerScene.getWindow() != null) {
       return (Stage) viewerScene.getWindow();
+    } else if (guessingRoomScene != null && guessingRoomScene.getWindow() != null) {
+      return (Stage) guessingRoomScene.getWindow();
     }
     return null;
   }
