@@ -57,6 +57,8 @@ public class GuessingRoomController {
           // Minimum zoom distance
           if (currentZoom < 3) {
             currentZoom = 3.0;
+          } else if (currentZoom > 18) {
+            currentZoom = 18.0;
           }
 
           // Apply zoom to both maps
