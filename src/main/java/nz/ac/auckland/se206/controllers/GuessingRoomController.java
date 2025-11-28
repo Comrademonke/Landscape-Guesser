@@ -41,6 +41,9 @@ public class GuessingRoomController {
     mapViewFiller.prefWidthProperty().bind(mapDisplay.widthProperty());
     mapViewFiller.prefHeightProperty().bind(mapDisplay.heightProperty());
 
+    // needed to create an infinite horizontal globe effect
+    mapViewFiller.toBack();
+
     mapView.setOnScroll(
         event -> {
           double zoomFactor;
@@ -75,8 +78,34 @@ public class GuessingRoomController {
           double newLongitude = dragStartCenter.getLongitude() - deltaX * scale;
           double newLatitude = dragStartCenter.getLatitude() + deltaY * scale;
 
+          newLatitude = Math.max(-90, Math.min(90, newLatitude));
+          newLongitude = mapWrappingHorizontally(newLongitude);
+
           mapView.setCenter(new MapPoint(newLatitude, newLongitude));
+          updateFillerMap(newLatitude, newLongitude);
         });
+  }
+
+  private void updateFillerMap(double latitude, double longitude) {
+    double fillerMapLongitude;
+
+    if (longitude >= 0) {
+      fillerMapLongitude = longitude - 360;
+    } else {
+      fillerMapLongitude = longitude + 360;
+    }
+
+    mapViewFiller.setCenter(new MapPoint(latitude, fillerMapLongitude));
+  }
+
+  private double mapWrappingHorizontally(double longitude) {
+    while (longitude > 180) {
+      longitude -= 360;
+    }
+    while (longitude < -180) {
+      longitude += 360;
+    }
+    return longitude;
   }
 
   @FXML
