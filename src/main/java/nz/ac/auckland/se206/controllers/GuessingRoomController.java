@@ -16,6 +16,12 @@ public class GuessingRoomController {
   @FXML private Label titleLabel;
   @FXML private Pane mapDisplay;
   @FXML private MapView mapView;
+  @FXML private MapView mapViewFiller;
+
+  private double dragStartX;
+  private double dragStartY;
+  private MapPoint dragStartCenter;
+  private double currentZoom = 3.0;
 
   @FXML
   private void initialize() {
@@ -23,11 +29,54 @@ public class GuessingRoomController {
   }
 
   private void setupMap() {
-    mapView.setZoom(3.0);
+    mapView.setZoom(currentZoom);
     mapView.setCenter(new MapPoint(0, 0));
+
+    mapViewFiller.setZoom(currentZoom);
+    mapViewFiller.setCenter(new MapPoint(0, 180));
 
     mapView.prefWidthProperty().bind(mapDisplay.widthProperty());
     mapView.prefHeightProperty().bind(mapDisplay.heightProperty());
+
+    mapViewFiller.prefWidthProperty().bind(mapDisplay.widthProperty());
+    mapViewFiller.prefHeightProperty().bind(mapDisplay.heightProperty());
+
+    mapView.setOnScroll(
+        event -> {
+          double zoomFactor;
+          if (event.getDeltaY() > 0) {
+            zoomFactor = 1.1;
+          } else {
+            zoomFactor = 0.9;
+          }
+          currentZoom *= zoomFactor;
+
+          // Apply zoom to both maps
+          mapView.setZoom(currentZoom);
+          mapViewFiller.setZoom(currentZoom);
+
+          event.consume();
+        });
+
+    mapView.setOnMousePressed(
+        event -> {
+          dragStartX = event.getX();
+          dragStartY = event.getY();
+          dragStartCenter = mapView.getCenter();
+        });
+
+    mapView.setOnMouseDragged(
+        event -> {
+          double deltaX = event.getX() - dragStartX;
+          double deltaY = event.getY() - dragStartY;
+
+          // Adjust sensitivity here
+          double scale = 0.5 / mapView.getZoom();
+          double newLongitude = dragStartCenter.getLongitude() - deltaX * scale;
+          double newLatitude = dragStartCenter.getLatitude() + deltaY * scale;
+
+          mapView.setCenter(new MapPoint(newLatitude, newLongitude));
+        });
   }
 
   @FXML

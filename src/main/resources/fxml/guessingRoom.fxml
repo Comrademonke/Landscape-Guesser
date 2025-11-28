@@ -18,6 +18,7 @@
       <Pane fx:id="mapDisplay" layoutX="51.0" layoutY="155.0" prefHeight="587.0" prefWidth="1435.0" styleClass="pane" stylesheets="@../css/guessingRoom.css">
          <children>
             <MapView fx:id="mapView" />
+            <MapView fx:id="mapViewFiller" layoutX="256.0" />
          </children></Pane>
       <Button fx:id="finalGuessButton" layoutX="515.0" layoutY="681.0" mnemonicParsing="false" onAction="#onFinalGuess" prefHeight="93.0" prefWidth="489.0" stylesheets="@../css/guessingRoom.css" text="FINALISE GUESS">
          <font>
