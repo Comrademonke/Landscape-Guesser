@@ -1,5 +1,7 @@
 package nz.ac.auckland.se206.controllers;
 
+import com.gluonhq.maps.MapPoint;
+import com.gluonhq.maps.MapView;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -13,6 +15,20 @@ public class GuessingRoomController {
   @FXML private Button finalGuessButton;
   @FXML private Label titleLabel;
   @FXML private Pane mapDisplay;
+  @FXML private MapView mapView;
+
+  @FXML
+  private void initialize() {
+    setupMap();
+  }
+
+  private void setupMap() {
+    mapView.setZoom(3.0);
+    mapView.setCenter(new MapPoint(0, 0));
+
+    mapView.prefWidthProperty().bind(mapDisplay.widthProperty());
+    mapView.prefHeightProperty().bind(mapDisplay.heightProperty());
+  }
 
   @FXML
   private void onReturnSwitch(ActionEvent event) {
