@@ -54,6 +54,11 @@ public class GuessingRoomController {
           }
           currentZoom *= zoomFactor;
 
+          // Minimum zoom distance
+          if (currentZoom < 3) {
+            currentZoom = 3.0;
+          }
+
           // Apply zoom to both maps
           mapView.setZoom(currentZoom);
           mapViewFiller.setZoom(currentZoom);
