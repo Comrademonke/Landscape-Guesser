@@ -50,6 +50,27 @@ public class LevelsController {
     switchToLevel("level3", 3, event);
   }
 
+  @FXML
+  private void onSwitchToLevelFour(ActionEvent event) {
+    // levelFourButton.setDisable(true);
+
+    switchToLevel("level4", 4, event);
+  }
+
+  @FXML
+  private void onSwitchToLevelFive(ActionEvent event) {
+    // levelFiveButton.setDisable(true);
+
+    switchToLevel("level5", 5, event);
+  }
+
+  @FXML
+  private void onSwitchToLevelSix(ActionEvent event) {
+    // levelSixButton.setDisable(true);
+
+    switchToLevel("level6", 6, event);
+  }
+
   public void switchToLevel(String level, int numberLevel, ActionEvent event) {
 
     GUI360Controller.panoramaPicker(level);
