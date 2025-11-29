@@ -46,6 +46,10 @@ public class GUI360JFxController {
   private BufferedImage[] skyBoxImageLevel4 = new BufferedImage[6];
   private BufferedImage[] skyBoxImageLevel5 = new BufferedImage[6];
   private BufferedImage[] skyBoxImageLevel6 = new BufferedImage[6];
+  private BufferedImage[] skyBoxImageLevel7 = new BufferedImage[6];
+  private BufferedImage[] skyBoxImageLevel8 = new BufferedImage[6];
+  private BufferedImage[] skyBoxImageLevel9 = new BufferedImage[6];
+  private BufferedImage[] skyBoxImageLevel10 = new BufferedImage[6];
 
   private javafx.scene.image.Image[] skyboxImagesFx;
 
@@ -155,7 +159,7 @@ public class GUI360JFxController {
           @Override
           protected Void call() throws Exception {
             // Storing images here
-            // java.net.URL imageUrl = getClass().getResource("/images/LakeOhia.jpg");
+            // java.net.URL imageUrl = getClass().getResource("/images/HukaFalls.jpg");
             // BufferedImage image = ImageIO.read(imageUrl);
             // skyBoxImages = EquirectangularToCubic.processImage(image);
 
@@ -164,11 +168,11 @@ public class GUI360JFxController {
             //   saveBufferedImage(
             //       imagee,
             //       "jpg",
-            //       "src/main/resources/images/panoramas/levelSixPanorama" + i + ".jpg");
+            //       "src/main/resources/images/panoramas/levelsTenPanorama" + i + ".jpg");
             //   i++;
             // }
 
-            int totalSteps = 36;
+            int totalSteps = 60;
             int currentStep = 0;
 
             for (int i = 0; i < 6; i++) {
@@ -242,6 +246,58 @@ public class GUI360JFxController {
                       getClass().getResource("/images/panoramas/levelSixPanorama" + i + ".jpg"));
               BufferedImage compressedImage = scaleImage(originalImage, 0.5);
               skyBoxImageLevel6[i] = compressedImage;
+
+              currentStep++;
+
+              double progress = currentStep / (double) totalSteps;
+              updateProgress(progress * 100, 100.0);
+            }
+
+            for (int i = 0; i < 6; i++) {
+              BufferedImage originalImage =
+                  ImageIO.read(
+                      getClass().getResource("/images/panoramas/levelSevenPanorama" + i + ".jpg"));
+              BufferedImage compressedImage = scaleImage(originalImage, 0.5);
+              skyBoxImageLevel7[i] = compressedImage;
+
+              currentStep++;
+
+              double progress = currentStep / (double) totalSteps;
+              updateProgress(progress * 100, 100.0);
+            }
+
+            for (int i = 0; i < 6; i++) {
+              BufferedImage originalImage =
+                  ImageIO.read(
+                      getClass().getResource("/images/panoramas/levelEightPanorama" + i + ".jpg"));
+              BufferedImage compressedImage = scaleImage(originalImage, 0.5);
+              skyBoxImageLevel8[i] = compressedImage;
+
+              currentStep++;
+
+              double progress = currentStep / (double) totalSteps;
+              updateProgress(progress * 100, 100.0);
+            }
+
+            for (int i = 0; i < 6; i++) {
+              BufferedImage originalImage =
+                  ImageIO.read(
+                      getClass().getResource("/images/panoramas/levelNinePanorama" + i + ".jpg"));
+              BufferedImage compressedImage = scaleImage(originalImage, 0.5);
+              skyBoxImageLevel9[i] = compressedImage;
+
+              currentStep++;
+
+              double progress = currentStep / (double) totalSteps;
+              updateProgress(progress * 100, 100.0);
+            }
+
+            for (int i = 0; i < 6; i++) {
+              BufferedImage originalImage =
+                  ImageIO.read(
+                      getClass().getResource("/images/panoramas/levelTenPanorama" + i + ".jpg"));
+              BufferedImage compressedImage = scaleImage(originalImage, 0.5);
+              skyBoxImageLevel10[i] = compressedImage;
 
               currentStep++;
 
@@ -384,6 +440,18 @@ public class GUI360JFxController {
         break;
       case "level6":
         skyBoxImages = skyBoxImageLevel6;
+        break;
+      case "level7":
+        skyBoxImages = skyBoxImageLevel7;
+        break;
+      case "level8":
+        skyBoxImages = skyBoxImageLevel8;
+        break;
+      case "level9":
+        skyBoxImages = skyBoxImageLevel9;
+        break;
+      case "level10":
+        skyBoxImages = skyBoxImageLevel10;
         break;
     }
     openPanoramaImage();

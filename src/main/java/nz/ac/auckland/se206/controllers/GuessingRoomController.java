@@ -280,5 +280,13 @@ public class GuessingRoomController {
     latitudeLongitudeCoordinates.put(5, new double[] {-35.2813526, 174.091962});
     // Lake Ohia
     latitudeLongitudeCoordinates.put(6, new double[] {-34.9484003, 173.3833872});
+    // Hamilton
+    latitudeLongitudeCoordinates.put(7, new double[] {-37.7838193, 175.2798247});
+    // Cape Reinga
+    latitudeLongitudeCoordinates.put(8, new double[] {-34.4266534, 172.6774505});
+    // New plymouth
+    latitudeLongitudeCoordinates.put(9, new double[] {-39.0561506, 174.0705975});
+    // Huka falls
+    latitudeLongitudeCoordinates.put(10, new double[] {-38.6496475, 176.0894571});
   }
 }

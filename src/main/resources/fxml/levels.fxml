@@ -66,5 +66,37 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
+       <Button fx:id="levelSevenButton" layoutX="425.666" layoutY="560.0" mnemonicParsing="false" onAction="#onSwitchToLevelSeven" prefHeight="130.0" prefWidth="130.0" stylesheets="@../css/levels.css" text="7">
+         <font>
+            <Font size="50.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button fx:id="levelEightButton" layoutX="703.499" layoutY="560.0" mnemonicParsing="false" onAction="#onSwitchToLevelEight" prefHeight="130.0" prefWidth="130.0" stylesheets="@../css/levels.css" text="8">
+         <font>
+            <Font size="50.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button fx:id="levelNineButton" layoutX="981.332" layoutY="560.0" mnemonicParsing="false" onAction="#onSwitchToLevelNine" prefHeight="130.0" prefWidth="130.0" stylesheets="@../css/levels.css" text="9">
+         <font>
+            <Font size="50.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button fx:id="levelTenButton" layoutX="1259.165" layoutY="560.0" mnemonicParsing="false" onAction="#onSwitchToLevelTen" prefHeight="130.0" prefWidth="130.0" stylesheets="@../css/levels.css" text="10">
+         <font>
+            <Font size="50.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
    </children>
 </Pane>

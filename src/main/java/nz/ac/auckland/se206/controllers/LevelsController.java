@@ -11,6 +11,13 @@ public class LevelsController {
   @FXML private Button levelOneButton;
   @FXML private Button levelTwoButton;
   @FXML private Button levelThreeButton;
+  @FXML private Button levelFourButton;
+  @FXML private Button levelFiveButton;
+  @FXML private Button levelSixButton;
+  @FXML private Button levelSevenButton;
+  @FXML private Button levelEightButton;
+  @FXML private Button levelNineButton;
+  @FXML private Button levelTenButton;
 
   private GUI360JFxController GUI360Controller;
   private GuessingRoomController guessingRoomController;
@@ -69,6 +76,34 @@ public class LevelsController {
     // levelSixButton.setDisable(true);
 
     switchToLevel("level6", 6, event);
+  }
+
+  @FXML
+  private void onSwitchToLevelSeven(ActionEvent event) {
+    // levelSevenButton.setDisable(true);
+
+    switchToLevel("level7", 7, event);
+  }
+
+  @FXML
+  private void onSwitchToLevelEight(ActionEvent event) {
+    // levelEightButton.setDisable(true);
+
+    switchToLevel("level8", 8, event);
+  }
+
+  @FXML
+  private void onSwitchToLevelNine(ActionEvent event) {
+    // levelNineButton.setDisable(true);
+
+    switchToLevel("level9", 9, event);
+  }
+
+  @FXML
+  private void onSwitchToLevelTen(ActionEvent event) {
+    // levelTenButton.setDisable(true);
+
+    switchToLevel("level10", 10, event);
   }
 
   public void switchToLevel(String level, int numberLevel, ActionEvent event) {
