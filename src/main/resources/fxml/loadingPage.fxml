@@ -21,6 +21,31 @@
          </font>
       </Label>
       <ProgressBar fx:id="loadingBar" layoutX="135.0" layoutY="657.0" prefHeight="45.0" prefWidth="1300.0" progress="0.0" style="-fx-border-color: white; -fx-border-width: 4;" stylesheets="@../css/loadingPage.css" />
+            <ImageView fx:id="owlAnimal" fitHeight="107.0" fitWidth="199.0" layoutX="562.0" layoutY="467.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/animalCharacters/owlCharacter.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="snakeAnimal" fitHeight="101.0" fitWidth="102.0" layoutX="610.0" layoutY="469.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/animalCharacters/snakeCharacter.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="monkeyAnimal" fitHeight="102.0" fitWidth="134.0" layoutX="704.0" layoutY="468.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/animalCharacters/monkeyCharacter.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="giraffeAnimal" fitHeight="107.0" fitWidth="102.0" layoutX="823.0" layoutY="467.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/animalCharacters/giraffeCharacter.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="foxAnimal" fitHeight="107.0" fitWidth="199.0" layoutX="862.0" layoutY="467.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/animalCharacters/foxCharacter.png" />
+         </image>
+      </ImageView>
       <Button fx:id="switchButton" contentDisplay="RIGHT" disable="true" layoutX="559.0" layoutY="466.0" mnemonicParsing="false" onAction="#switchScene" prefHeight="107.0" prefWidth="406.0" stylesheets="@../css/loadingPage.css" text="Explore">
          <font>
             <Font size="20.0" />

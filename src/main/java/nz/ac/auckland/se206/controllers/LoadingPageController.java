@@ -1,5 +1,7 @@
 package nz.ac.auckland.se206.controllers;
 
+import javafx.animation.RotateTransition;
+import javafx.animation.TranslateTransition;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.event.ActionEvent;
@@ -7,9 +9,11 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.image.ImageView;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.text.Font;
+import javafx.util.Duration;
 import nz.ac.auckland.se206.App;
 
 public class LoadingPageController {
@@ -20,14 +24,23 @@ public class LoadingPageController {
   @FXML private Button switchButton;
   @FXML private Label numberLabel;
   @FXML private Label loadingLabel;
+  @FXML private ImageView imageProgress;
+  @FXML private ImageView owlAnimal;
+  @FXML private ImageView snakeAnimal;
+  @FXML private ImageView monkeyAnimal;
+  @FXML private ImageView giraffeAnimal;
+  @FXML private ImageView foxAnimal;
 
   private MediaPlayer mediaPlayer;
   private DoubleProperty progressProperty = new SimpleDoubleProperty(0);
 
   @FXML
   private void initialize() {
-    System.out.println(
-        "************* Initialising Counter Controller ************************" + this);
+    owlAnimal.setVisible(false);
+    snakeAnimal.setVisible(false);
+    monkeyAnimal.setVisible(false);
+    giraffeAnimal.setVisible(false);
+    foxAnimal.setVisible(false);
 
     playMusic();
 
@@ -46,7 +59,33 @@ public class LoadingPageController {
     if (value >= 100) {
       switchButton.setDisable(false);
       switchButton.setFont(new Font("futura", 36));
+      moveAnimals();
     }
+  }
+
+  public void moveAnimals() {
+    moveMiddleAnimals(owlAnimal, -50, -60, -35);
+    moveMiddleAnimals(snakeAnimal, 0, -70, 0);
+    moveMiddleAnimals(monkeyAnimal, 0, -70, 0);
+    moveMiddleAnimals(giraffeAnimal, 0, -75, 0);
+    moveMiddleAnimals(foxAnimal, 50, -65, 35);
+  }
+
+  public void moveMiddleAnimals(ImageView image, int xPosition, int yPosition, int rotationAngle) {
+    TranslateTransition transition = new TranslateTransition();
+    transition.setNode(image);
+    transition.setToX(xPosition);
+    transition.setToY(yPosition);
+    transition.setDuration(Duration.seconds(1));
+    image.setVisible(true);
+
+    RotateTransition rotateTransition = new RotateTransition();
+    rotateTransition.setNode(image);
+    rotateTransition.setByAngle(rotationAngle);
+    rotateTransition.setDuration(Duration.seconds(1));
+
+    transition.play();
+    rotateTransition.play();
   }
 
   private void playMusic() {
@@ -56,7 +95,7 @@ public class LoadingPageController {
     mediaPlayer = new MediaPlayer(media);
 
     mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
-    mediaPlayer.setVolume(0.0);
+    mediaPlayer.setVolume(0.3);
 
     mediaPlayer.play();
   }
