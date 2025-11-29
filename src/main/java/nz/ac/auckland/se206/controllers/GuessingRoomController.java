@@ -84,6 +84,15 @@ public class GuessingRoomController {
           dragStartCenter = mapView.getCenter();
         });
 
+    mapView.setOnMouseReleased(
+        event -> {
+          if (dragStartX == event.getX() && dragStartY == event.getY()) {
+            MapPoint clickedPoint = mapView.getMapPosition(event.getX(), event.getY());
+
+            customMapLayer.updateGuessMarker(clickedPoint);
+          }
+        });
+
     mapView.setOnMouseDragged(
         event -> {
           double deltaX = event.getX() - dragStartX;
