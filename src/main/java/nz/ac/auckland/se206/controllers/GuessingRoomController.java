@@ -3,12 +3,19 @@ package nz.ac.auckland.se206.controllers;
 import com.gluonhq.maps.MapPoint;
 import com.gluonhq.maps.MapView;
 import java.util.HashMap;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
+import javafx.util.Duration;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.CustomMapLayer;
 
@@ -21,6 +28,9 @@ public class GuessingRoomController {
   @FXML private MapView mapView;
   @FXML private MapView mapViewFiller;
   @FXML private Label distanceLabel;
+  @FXML private StackPane scoreBoard;
+
+  private boolean isScoreBoardVisible = false;
 
   private double dragStartX;
   private double dragStartY;
@@ -35,6 +45,8 @@ public class GuessingRoomController {
     setupMap();
     setupMarkers();
     initializeLatitudeLongitudeCoordinates();
+
+    scoreBoard.setLayoutX(2000);
   }
 
   private void setupMarkers() {
@@ -289,5 +301,49 @@ public class GuessingRoomController {
     latitudeLongitudeCoordinates.put(9, new double[] {-39.0561506, 174.0705975});
     // Huka falls
     latitudeLongitudeCoordinates.put(10, new double[] {-38.6496475, 176.0894571});
+  }
+
+  @FXML
+  private void moveScoreboard(KeyEvent event) {
+    KeyCode code = event.getCode();
+
+    if (code == KeyCode.Q) {
+      event.consume();
+      toggleScoreBoardPosition();
+    }
+  }
+
+  private void toggleScoreBoardPosition() {
+    if (isScoreBoardVisible) {
+      flyOutAnimation();
+    } else {
+      flyInAnimation();
+    }
+    isScoreBoardVisible = !isScoreBoardVisible;
+  }
+
+  private void flyOutAnimation() {
+    double startX = 1068.0;
+    double endX = 2000;
+
+    Timeline timeline =
+        new Timeline(
+            new KeyFrame(Duration.ZERO, new KeyValue(scoreBoard.layoutXProperty(), startX)),
+            new KeyFrame(Duration.millis(400), new KeyValue(scoreBoard.layoutXProperty(), endX)));
+    timeline.play();
+  }
+
+  private void flyInAnimation() {
+    double startX = 2000;
+    double endX = 1068.0;
+
+    scoreBoard.setLayoutX(startX);
+    scoreBoard.setVisible(true);
+
+    Timeline timeline =
+        new Timeline(
+            new KeyFrame(Duration.ZERO, new KeyValue(scoreBoard.layoutXProperty(), startX)),
+            new KeyFrame(Duration.millis(400), new KeyValue(scoreBoard.layoutXProperty(), endX)));
+    timeline.play();
   }
 }

@@ -6,9 +6,11 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.shape.Polygon?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1537.0" style="-fx-background-color: #252929;" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.GuessingRoomController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#moveScoreboard" prefHeight="800.0" prefWidth="1537.0" style="-fx-background-color: #252929;" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.GuessingRoomController">
    <children>
       <ImageView fitHeight="894.0" fitWidth="1538.0" layoutX="2.0" opacity="0.4" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -40,5 +42,15 @@
             <Font size="40.0" />
          </font>
       </Label>
+      <StackPane fx:id="scoreBoard" layoutX="1068.0" layoutY="171.0" prefHeight="150.0" prefWidth="200.0">
+         <children>
+            <Polygon fill="#00ff44" points="-234.0, 182.35330200195312, -314.0, 38.176513671875, 155.5999755859375, 38.17664337158203, 155.0, 182.35330200195312" stroke="#00ff44" strokeType="INSIDE" />
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="140.0" prefWidth="310.0" stylesheets="@../css/guessingRoom.css" text="Score:&#10;0">
+               <font>
+                  <Font size="48.0" />
+               </font>
+            </Label>
+         </children>
+      </StackPane>
    </children>
 </Pane>
