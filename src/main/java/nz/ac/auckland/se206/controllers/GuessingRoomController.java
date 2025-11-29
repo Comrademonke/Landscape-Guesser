@@ -188,6 +188,18 @@ public class GuessingRoomController {
     returnButton.setDisable(true);
     customMapLayer.updateTargetMarkerVisibility(true);
     customMapLayer.updateLineVisibility(true);
+
+    MapPoint finalPoint = customMapLayer.returnTargetMarker();
+    double fillerLongitude;
+    if (finalPoint.getLongitude() >= 0) {
+      fillerLongitude = finalPoint.getLongitude() - 360;
+    } else {
+      fillerLongitude = finalPoint.getLongitude() + 360;
+    }
+    MapPoint fillerFinalPoint = new MapPoint(finalPoint.getLatitude(), fillerLongitude);
+
+    mapView.flyTo(1.0, finalPoint, 1.0);
+    mapViewFiller.flyTo(1.0, fillerFinalPoint, 1.0);
   }
 
   public void setLatitudeLongitude(int value) {

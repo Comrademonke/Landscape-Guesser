@@ -60,6 +60,10 @@ public class CustomMapLayer extends MapLayer {
     layoutLayer();
   }
 
+  public MapPoint returnTargetMarker() {
+    return targetPoint;
+  }
+
   public void drawConnectionLine() {
     Point2D targetScreenPoint = getMapPointLatLong(targetPoint);
     Point2D guessScreenPoint = getMapPointLatLong(guessPoint);
