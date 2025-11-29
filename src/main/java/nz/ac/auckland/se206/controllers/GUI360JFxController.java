@@ -316,9 +316,6 @@ public class GUI360JFxController {
         event -> {
           Platform.runLater(
               () -> {
-                System.out.println(
-                    "Skybox created successfully - you should be inside the cube now!");
-
                 atlas.getChildren().clear();
                 atlas.getChildren().add(sky);
               });

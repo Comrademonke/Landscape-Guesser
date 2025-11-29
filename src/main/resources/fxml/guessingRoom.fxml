@@ -35,5 +35,10 @@
             <Font size="19.0" />
          </font>
       </Button>
+       <Label fx:id="distanceLabel" alignment="CENTER" contentDisplay="CENTER" layoutY="154.0" prefHeight="58.0" prefWidth="1537.0" text="Your guess was x meters away." textFill="RED" visible="false">
+         <font>
+            <Font size="40.0" />
+         </font>
+      </Label>
    </children>
 </Pane>

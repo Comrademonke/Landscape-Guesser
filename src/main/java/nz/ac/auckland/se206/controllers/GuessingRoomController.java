@@ -20,6 +20,7 @@ public class GuessingRoomController {
   @FXML private Pane mapDisplay;
   @FXML private MapView mapView;
   @FXML private MapView mapViewFiller;
+  @FXML private Label distanceLabel;
 
   private double dragStartX;
   private double dragStartY;
@@ -146,7 +147,6 @@ public class GuessingRoomController {
 
   @FXML
   private void onReturnSwitch(ActionEvent event) {
-    System.out.println("switching to viewer");
     App app = App.getInstance();
     if (app != null) {
       app.switchToViewerScene();
@@ -155,7 +155,6 @@ public class GuessingRoomController {
 
   @FXML
   private void switchToLevelScene() {
-    System.out.println("switch to viewer");
     App app = App.getInstance();
     if (app != null) {
       app.switchToLevelScene();
@@ -173,6 +172,7 @@ public class GuessingRoomController {
 
       mapDisplay.setDisable(false);
       returnButton.setDisable(false);
+      distanceLabel.setVisible(false);
 
       customMapLayer.updateGuessMarkerVisibility(false);
       customMapLayer.updateTargetMarkerVisibility(false);
@@ -189,6 +189,8 @@ public class GuessingRoomController {
     customMapLayer.updateTargetMarkerVisibility(true);
     customMapLayer.updateLineVisibility(true);
 
+    calculateDistance();
+
     MapPoint finalPoint = customMapLayer.returnTargetMarker();
     double fillerLongitude;
     if (finalPoint.getLongitude() >= 0) {
@@ -200,6 +202,57 @@ public class GuessingRoomController {
 
     mapView.flyTo(1.0, finalPoint, 1.0);
     mapViewFiller.flyTo(1.0, fillerFinalPoint, 1.0);
+  }
+
+  private void calculateDistance() {
+    MapPoint coordinate1 = customMapLayer.returnGuessMarker();
+    MapPoint coordinate2 = customMapLayer.returnTargetMarker();
+
+    double distanceKm =
+        calculateHaversineDistance(
+            coordinate1.getLatitude(), coordinate1.getLongitude(),
+            coordinate2.getLatitude(), coordinate2.getLongitude());
+
+    double distanceMeters = distanceKm * 1000;
+    String formattedDistance = String.format("%,d", (int) distanceMeters);
+
+    // Display the distance
+    distanceLabel.setVisible(true);
+    distanceLabel.setText("Your guess was " + formattedDistance + " meters away.");
+  }
+
+  private double calculateHaversineDistance(
+      double latitude1, double longitude1, double latitude2, double longitude2) {
+    // Earth's radius in kilometers
+    final int Radius = 6371;
+
+    // Convert degrees to radians
+    double latitudeDistance = Math.toRadians(latitude2 - latitude1);
+    double longitudeDistance = Math.toRadians(longitude2 - longitude1);
+
+    // const R = 6371e3; // metres
+    // const φ1 = lat1 * Math.PI/180; // φ, λ in radians
+    // const φ2 = lat2 * Math.PI/180;
+    // const Δφ = (lat2-lat1) * Math.PI/180;
+    // const Δλ = (lon2-lon1) * Math.PI/180;
+
+    // const a = Math.sin(Δφ/2) * Math.sin(Δφ/2) +
+    //           Math.cos(φ1) * Math.cos(φ2) *
+    //           Math.sin(Δλ/2) * Math.sin(Δλ/2);
+    // const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+    //
+    // const d = R * c;
+    // c = angular distance (in radians) a = square of half the chord length between the points
+    double a =
+        Math.sin(latitudeDistance / 2) * Math.sin(latitudeDistance / 2)
+            + Math.cos(Math.toRadians(latitude1))
+                * Math.cos(Math.toRadians(latitude2))
+                * Math.sin(longitudeDistance / 2)
+                * Math.sin(longitudeDistance / 2);
+
+    double angularDistance = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+    return Radius * angularDistance;
   }
 
   public void setLatitudeLongitude(int value) {
