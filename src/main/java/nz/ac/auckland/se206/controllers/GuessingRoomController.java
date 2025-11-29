@@ -274,9 +274,11 @@ public class GuessingRoomController {
     latitudeLongitudeCoordinates.put(2, new double[] {-38.1338429, 176.2515456});
     // Whangarei
     latitudeLongitudeCoordinates.put(3, new double[] {-35.7252682, 174.3244103});
-
-    latitudeLongitudeCoordinates.put(4, new double[] {-35.7252682, 174.3244103});
-    latitudeLongitudeCoordinates.put(5, new double[] {-35.7252682, 174.3244103});
-    latitudeLongitudeCoordinates.put(6, new double[] {-35.7252682, 174.3244103});
+    // Taupo
+    latitudeLongitudeCoordinates.put(4, new double[] {-38.6982061, 176.0830989});
+    // Paihia
+    latitudeLongitudeCoordinates.put(5, new double[] {-35.2813526, 174.091962});
+    // Lake Ohia
+    latitudeLongitudeCoordinates.put(6, new double[] {-34.9484003, 173.3833872});
   }
 }

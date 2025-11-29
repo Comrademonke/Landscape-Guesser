@@ -155,7 +155,7 @@ public class GUI360JFxController {
           @Override
           protected Void call() throws Exception {
             // Storing images here
-            // java.net.URL imageUrl = getClass().getResource("/images/Otorohanga.jpg");
+            // java.net.URL imageUrl = getClass().getResource("/images/LakeOhia.jpg");
             // BufferedImage image = ImageIO.read(imageUrl);
             // skyBoxImages = EquirectangularToCubic.processImage(image);
 
@@ -164,7 +164,7 @@ public class GUI360JFxController {
             //   saveBufferedImage(
             //       imagee,
             //       "jpg",
-            //       "src/main/resources/images/panoramas/levelThreePanorama" + i + ".jpg");
+            //       "src/main/resources/images/panoramas/levelSixPanorama" + i + ".jpg");
             //   i++;
             // }
 
@@ -213,7 +213,7 @@ public class GUI360JFxController {
             for (int i = 0; i < 6; i++) {
               BufferedImage originalImage =
                   ImageIO.read(
-                      getClass().getResource("/images/panoramas/levelThreePanorama" + i + ".jpg"));
+                      getClass().getResource("/images/panoramas/levelFourPanorama" + i + ".jpg"));
               BufferedImage compressedImage = scaleImage(originalImage, 0.5);
               skyBoxImageLevel4[i] = compressedImage;
 
@@ -226,7 +226,7 @@ public class GUI360JFxController {
             for (int i = 0; i < 6; i++) {
               BufferedImage originalImage =
                   ImageIO.read(
-                      getClass().getResource("/images/panoramas/levelThreePanorama" + i + ".jpg"));
+                      getClass().getResource("/images/panoramas/levelFivePanorama" + i + ".jpg"));
               BufferedImage compressedImage = scaleImage(originalImage, 0.5);
               skyBoxImageLevel5[i] = compressedImage;
 
@@ -239,7 +239,7 @@ public class GUI360JFxController {
             for (int i = 0; i < 6; i++) {
               BufferedImage originalImage =
                   ImageIO.read(
-                      getClass().getResource("/images/panoramas/levelThreePanorama" + i + ".jpg"));
+                      getClass().getResource("/images/panoramas/levelSixPanorama" + i + ".jpg"));
               BufferedImage compressedImage = scaleImage(originalImage, 0.5);
               skyBoxImageLevel6[i] = compressedImage;
 
