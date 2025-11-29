@@ -169,6 +169,7 @@ public class GuessingRoomController {
       finalGuessButton.setText("FINALISE GUESS");
 
       mapDisplay.setDisable(false);
+      returnButton.setDisable(false);
 
       customMapLayer.updateGuessMarkerVisibility(false);
       customMapLayer.updateGuessMarker(new MapPoint(0.0, 0.0));
@@ -179,5 +180,6 @@ public class GuessingRoomController {
 
     finalGuessButton.setText("CONTINUE");
     mapDisplay.setDisable(true);
+    returnButton.setDisable(true);
   }
 }
