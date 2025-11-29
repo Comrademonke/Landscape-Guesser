@@ -165,7 +165,19 @@ public class GuessingRoomController {
     if (guessMarker.getLatitude() == 0.0 && guessMarker.getLongitude() == 0.0) {
       return;
     }
-    customMapLayer.updateGuessMarkerVisibility(false);
-    switchToLevelScene();
+    if (finalGuessButton.getText().equals("CONTINUE")) {
+      finalGuessButton.setText("FINALISE GUESS");
+
+      mapDisplay.setDisable(false);
+
+      customMapLayer.updateGuessMarkerVisibility(false);
+      customMapLayer.updateGuessMarker(new MapPoint(0.0, 0.0));
+
+      switchToLevelScene();
+      return;
+    }
+
+    finalGuessButton.setText("CONTINUE");
+    mapDisplay.setDisable(true);
   }
 }
