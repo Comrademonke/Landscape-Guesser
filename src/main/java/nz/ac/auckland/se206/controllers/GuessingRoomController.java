@@ -111,7 +111,8 @@ public class GuessingRoomController {
           double deltaY = event.getY() - dragStartY;
 
           // Adjust sensitivity here
-          double scale = 0.5 / mapView.getZoom();
+          double scale = 3.0 * Math.exp(-0.8 * mapView.getZoom());
+
           double newLongitude = dragStartCenter.getLongitude() - deltaX * scale;
           double newLatitude = dragStartCenter.getLatitude() + deltaY * scale;
 
