@@ -25,10 +25,17 @@ public class CustomMapLayer extends MapLayer {
     getChildren().add(guessingMarker);
   }
 
+  public void updateGuessMarkerVisibility(boolean isGuessingMarkerVisible) {
+    guessingMarker.setVisible(isGuessingMarkerVisible);
+  }
+
   public void updateGuessMarker(MapPoint mapPoint) {
     this.guessPoint = mapPoint;
-    guessingMarker.setVisible(true);
     layoutLayer();
+  }
+
+  public MapPoint returnGuessMarker() {
+    return guessPoint;
   }
 
   @Override

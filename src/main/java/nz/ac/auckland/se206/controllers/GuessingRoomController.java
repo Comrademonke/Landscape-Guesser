@@ -2,6 +2,7 @@ package nz.ac.auckland.se206.controllers;
 
 import com.gluonhq.maps.MapPoint;
 import com.gluonhq.maps.MapView;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -24,6 +25,7 @@ public class GuessingRoomController {
   private MapPoint dragStartCenter;
   private double currentZoom = 3.0;
   private CustomMapLayer customMapLayer;
+  private MapPoint guessMarker;
 
   @FXML
   private void initialize() {
@@ -35,6 +37,11 @@ public class GuessingRoomController {
     customMapLayer = new CustomMapLayer();
 
     mapView.addLayer(customMapLayer);
+
+    Platform.runLater(
+        () -> {
+          customMapLayer.updateGuessMarker(new MapPoint(0.0, 0.0));
+        });
   }
 
   private void setupMap() {
@@ -90,6 +97,7 @@ public class GuessingRoomController {
             MapPoint clickedPoint = mapView.getMapPosition(event.getX(), event.getY());
 
             customMapLayer.updateGuessMarker(clickedPoint);
+            customMapLayer.updateGuessMarkerVisibility(true);
           }
         });
 
@@ -153,6 +161,11 @@ public class GuessingRoomController {
 
   @FXML
   private void onFinalGuess(ActionEvent event) {
+    guessMarker = customMapLayer.returnGuessMarker();
+    if (guessMarker.getLatitude() == 0.0 && guessMarker.getLongitude() == 0.0) {
+      return;
+    }
+    customMapLayer.updateGuessMarkerVisibility(false);
     switchToLevelScene();
   }
 }
