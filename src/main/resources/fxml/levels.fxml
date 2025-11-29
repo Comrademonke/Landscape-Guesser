@@ -20,21 +20,36 @@
             <Font size="100.0" />
          </font>
       </Label>
-      <Button fx:id="levelOneButton" layoutX="147.8333" layoutY="301.0" mnemonicParsing="false" onAction="#onSwitchToLevelOne" prefHeight="130.0" prefWidth="130.0" stylesheets="@../css/levels.css" text="1">
+      <ImageView fx:id="rabbitImage" fitHeight="135.0" fitWidth="97.0" layoutX="167.0" layoutY="297.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/animalCharacters/rabbitCharacter.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="levelOneButton" layoutX="147.8333" layoutY="301.0" mnemonicParsing="false" onAction="#onSwitchToLevelOne" onMouseEntered="#moveRabbitUp" onMouseExited="#moveRabbitDown" prefHeight="130.0" prefWidth="130.0" stylesheets="@../css/levels.css" text="1">
          <font>
             <Font size="50.0" />
          </font>
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
-      <Button fx:id="levelTwoButton" layoutX="425.666" layoutY="301.0" mnemonicParsing="false" onAction="#onSwitchToLevelTwo" prefHeight="130.0" prefWidth="130.0" stylesheets="@../css/levels.css" text="2">
+      <ImageView fx:id="penguinImage" fitHeight="117.0" fitWidth="130.0" layoutX="430.0" layoutY="313.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/animalCharacters/penguinCharacter.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="levelTwoButton" layoutX="425.666" layoutY="301.0" mnemonicParsing="false" onAction="#onSwitchToLevelTwo" onMouseEntered="#movePenguinUp" onMouseExited="#movePenguinDown" prefHeight="130.0" prefWidth="130.0" stylesheets="@../css/levels.css" text="2">
          <font>
             <Font size="50.0" />
          </font>
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
-      <Button fx:id="levelThreeButton" layoutX="703.499" layoutY="301.0" mnemonicParsing="false" onAction="#onSwitchToLevelThree" prefHeight="130.0" prefWidth="130.0" stylesheets="@../css/levels.css" text="3">
+      <ImageView fx:id="dogImage" fitHeight="128.0" fitWidth="113.0" layoutX="719.0" layoutY="302.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/animalCharacters/dogCharacter.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="levelThreeButton" layoutX="703.499" layoutY="301.0" mnemonicParsing="false" onAction="#onSwitchToLevelThree" onMouseEntered="#moveDogUp" onMouseExited="#moveDogDown" prefHeight="130.0" prefWidth="130.0" stylesheets="@../css/levels.css" text="3">
          <font>
             <Font size="50.0" />
          </font>
@@ -42,7 +57,12 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-       <Button fx:id="levelFourButton" layoutX="981.332" layoutY="301.0" mnemonicParsing="false" onAction="#onSwitchToLevelFour" prefHeight="130.0" prefWidth="130.0" stylesheets="@../css/levels.css" text="4">
+      <ImageView fx:id="pigImage" fitHeight="114.0" fitWidth="123.0" layoutX="986.0" layoutY="300.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/animalCharacters/pigCharacter.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="levelFourButton" layoutX="981.332" layoutY="301.0" mnemonicParsing="false" onAction="#onSwitchToLevelFour" onMouseEntered="#movePigUp" onMouseExited="#movePigDown" prefHeight="130.0" prefWidth="130.0" stylesheets="@../css/levels.css" text="4">
          <font>
             <Font size="50.0" />
          </font>
@@ -50,7 +70,12 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button fx:id="levelFiveButton" layoutX="1259.165" layoutY="301.0" mnemonicParsing="false" onAction="#onSwitchToLevelFive" prefHeight="130.0" prefWidth="130.0" stylesheets="@../css/levels.css" text="5"> 
+      <ImageView fx:id="catImage" fitHeight="111.0" fitWidth="123.0" layoutX="1262.0" layoutY="308.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/animalCharacters/catCharacter.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="levelFiveButton" layoutX="1259.165" layoutY="301.0" mnemonicParsing="false" onAction="#onSwitchToLevelFive" onMouseEntered="#moveCatUp" onMouseExited="#moveCatDown" prefHeight="130.0" prefWidth="130.0" stylesheets="@../css/levels.css" text="5">
          <font>
             <Font size="50.0" />
          </font>
@@ -58,7 +83,12 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-       <Button fx:id="levelSixButton" layoutX="147.8333" layoutY="560.0" mnemonicParsing="false" onAction="#onSwitchToLevelSix" prefHeight="130.0" prefWidth="130.0" stylesheets="@../css/levels.css" text="6">
+      <ImageView fx:id="frogImage" fitHeight="128.0" fitWidth="113.0" layoutX="156.0" layoutY="580.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/animalCharacters/frogCharacter.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="levelSixButton" layoutX="147.8333" layoutY="560.0" mnemonicParsing="false" onAction="#onSwitchToLevelSix" onMouseEntered="#moveFrogUp" onMouseExited="#moveFrogDown" prefHeight="130.0" prefWidth="130.0" stylesheets="@../css/levels.css" text="6">
          <font>
             <Font size="50.0" />
          </font>
@@ -66,7 +96,12 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-       <Button fx:id="levelSevenButton" layoutX="425.666" layoutY="560.0" mnemonicParsing="false" onAction="#onSwitchToLevelSeven" prefHeight="130.0" prefWidth="130.0" stylesheets="@../css/levels.css" text="7">
+      <ImageView fx:id="tigerImage" fitHeight="101.0" fitWidth="129.0" layoutX="430.0" layoutY="569.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/animalCharacters/tigerCharacter.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="levelSevenButton" layoutX="425.666" layoutY="560.0" mnemonicParsing="false" onAction="#onSwitchToLevelSeven" onMouseEntered="#moveTigerUp" onMouseExited="#moveTigerDown" prefHeight="130.0" prefWidth="130.0" stylesheets="@../css/levels.css" text="7">
          <font>
             <Font size="50.0" />
          </font>
@@ -74,7 +109,12 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button fx:id="levelEightButton" layoutX="703.499" layoutY="560.0" mnemonicParsing="false" onAction="#onSwitchToLevelEight" prefHeight="130.0" prefWidth="130.0" stylesheets="@../css/levels.css" text="8">
+      <ImageView fx:id="cowImage" fitHeight="101.0" fitWidth="123.0" layoutX="711.0" layoutY="571.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/animalCharacters/cowCharacter.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="levelEightButton" layoutX="703.499" layoutY="560.0" mnemonicParsing="false" onAction="#onSwitchToLevelEight" onMouseEntered="#moveCowUp" onMouseExited="#moveCowDown" prefHeight="130.0" prefWidth="130.0" stylesheets="@../css/levels.css" text="8">
          <font>
             <Font size="50.0" />
          </font>
@@ -82,7 +122,12 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button fx:id="levelNineButton" layoutX="981.332" layoutY="560.0" mnemonicParsing="false" onAction="#onSwitchToLevelNine" prefHeight="130.0" prefWidth="130.0" stylesheets="@../css/levels.css" text="9">
+      <ImageView fx:id="ratImage" fitHeight="110.0" fitWidth="139.0" layoutX="985.0" layoutY="565.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/animalCharacters/ratCharacter.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="levelNineButton" layoutX="981.332" layoutY="560.0" mnemonicParsing="false" onAction="#onSwitchToLevelNine" onMouseEntered="#moveRatUp" onMouseExited="#moveRatDown" prefHeight="130.0" prefWidth="130.0" stylesheets="@../css/levels.css" text="9">
          <font>
             <Font size="50.0" />
          </font>
@@ -90,7 +135,12 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button fx:id="levelTenButton" layoutX="1259.165" layoutY="560.0" mnemonicParsing="false" onAction="#onSwitchToLevelTen" prefHeight="130.0" prefWidth="130.0" stylesheets="@../css/levels.css" text="10">
+      <ImageView fx:id="chickenImage" fitHeight="128.0" fitWidth="113.0" layoutX="1268.0" layoutY="562.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/animalCharacters/chickenCharacter.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="levelTenButton" layoutX="1259.165" layoutY="560.0" mnemonicParsing="false" onAction="#onSwitchToLevelTen" onMouseEntered="#moveChickenUp" onMouseExited="#moveChickenDown" prefHeight="130.0" prefWidth="130.0" stylesheets="@../css/levels.css" text="10">
          <font>
             <Font size="50.0" />
          </font>

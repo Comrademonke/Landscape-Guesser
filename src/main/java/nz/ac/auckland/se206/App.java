@@ -70,6 +70,9 @@ public class App extends Application {
     viewerScene.setCamera(GUI360JFxController.getCamera());
 
     stage.setScene(loadingPageScene);
+
+    stage.setMaximized(true);
+
     stage.show();
   }
 
