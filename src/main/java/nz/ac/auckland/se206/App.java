@@ -12,6 +12,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import nz.ac.auckland.se206.controllers.GUI360JFxController;
+import nz.ac.auckland.se206.controllers.GuessingRoomController;
 import nz.ac.auckland.se206.controllers.LevelsController;
 import nz.ac.auckland.se206.controllers.LoadingPageController;
 
@@ -22,6 +23,7 @@ public class App extends Application {
   private Scene viewerScene;
   private Scene guessingRoomScene;
   private LoadingPageController loadingPageController;
+  private GuessingRoomController guessingRoomController;
 
   private Stage buttonStage;
   private Button switchButton;
@@ -46,6 +48,7 @@ public class App extends Application {
     FXMLLoader guessingRoomLoader =
         new FXMLLoader(App.class.getResource("/fxml/guessingRoom.fxml"));
     Parent guessingRoomRoot = guessingRoomLoader.load();
+    guessingRoomController = guessingRoomLoader.getController();
     guessingRoomScene = new Scene(guessingRoomRoot);
 
     GUI360JFxController GUI360JFxController = new GUI360JFxController();
@@ -57,6 +60,7 @@ public class App extends Application {
 
     // Inject controller
     levelsController.setGUI360Controller(GUI360JFxController);
+    levelsController.setGuessingRoomController(guessingRoomController);
 
     GUI360JFxController.initialize();
 

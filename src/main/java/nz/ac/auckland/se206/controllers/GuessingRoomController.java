@@ -2,6 +2,7 @@ package nz.ac.auckland.se206.controllers;
 
 import com.gluonhq.maps.MapPoint;
 import com.gluonhq.maps.MapView;
+import java.util.HashMap;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -26,11 +27,13 @@ public class GuessingRoomController {
   private double currentZoom = 3.0;
   private CustomMapLayer customMapLayer;
   private MapPoint guessMarker;
+  private HashMap<Integer, double[]> latitudeLongitudeCoordinates = new HashMap<>();
 
   @FXML
   private void initialize() {
     setupMap();
     setupMarkers();
+    initializeLatitudeLongitudeCoordinates();
   }
 
   private void setupMarkers() {
@@ -172,6 +175,7 @@ public class GuessingRoomController {
       returnButton.setDisable(false);
 
       customMapLayer.updateGuessMarkerVisibility(false);
+      customMapLayer.updateTargetMarkerVisibility(false);
       customMapLayer.updateGuessMarker(new MapPoint(0.0, 0.0));
 
       switchToLevelScene();
@@ -181,5 +185,27 @@ public class GuessingRoomController {
     finalGuessButton.setText("CONTINUE");
     mapDisplay.setDisable(true);
     returnButton.setDisable(true);
+    customMapLayer.updateTargetMarkerVisibility(true);
+  }
+
+  public void setLatitudeLongitude(int value) {
+    // Assign values to latitude and longitude
+    double[] coordinates = latitudeLongitudeCoordinates.get(value);
+
+    double latitude = coordinates[0];
+    double longitude = coordinates[1];
+
+    customMapLayer.updateTargetMarker(new MapPoint(latitude, longitude));
+  }
+
+  public void initializeLatitudeLongitudeCoordinates() {
+    // Each coordinate for each level
+
+    // Otorohanga
+    latitudeLongitudeCoordinates.put(1, new double[] {-38.1888609, 175.209955});
+    // Rotorua
+    latitudeLongitudeCoordinates.put(2, new double[] {-38.1338429, 176.2515456});
+    // Whangarei
+    latitudeLongitudeCoordinates.put(3, new double[] {-35.7252682, 174.3244103});
   }
 }

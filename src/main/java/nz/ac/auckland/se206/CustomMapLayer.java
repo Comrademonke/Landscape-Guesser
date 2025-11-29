@@ -10,13 +10,15 @@ import javafx.scene.shape.Circle;
 public class CustomMapLayer extends MapLayer {
   private final Node marker;
   private final Node guessingMarker;
-  private final MapPoint point = new MapPoint(-40.9006, 174.8860);
 
   private MapPoint guessPoint;
+  // Temporary stand in point
+  private MapPoint targetPoint = new MapPoint(0.0, 0.0);
 
   public CustomMapLayer() {
     // Target marker
     marker = new Circle(5, Color.RED);
+    marker.setVisible(false);
     getChildren().add(marker);
 
     // Guessing marker
@@ -38,11 +40,20 @@ public class CustomMapLayer extends MapLayer {
     return guessPoint;
   }
 
+  public void updateTargetMarkerVisibility(boolean isTargetMarkerVisible) {
+    marker.setVisible(isTargetMarkerVisible);
+  }
+
+  public void updateTargetMarker(MapPoint mapPoint) {
+    this.targetPoint = mapPoint;
+    layoutLayer();
+  }
+
   @Override
   protected void layoutLayer() {
-    Point2D targetPoint = getMapPoint(point.getLatitude(), point.getLongitude());
-    marker.setTranslateX(targetPoint.getX());
-    marker.setTranslateY(targetPoint.getY());
+    Point2D targetScreenPoint = getMapPoint(targetPoint.getLatitude(), targetPoint.getLongitude());
+    marker.setTranslateX(targetScreenPoint.getX());
+    marker.setTranslateY(targetScreenPoint.getY());
 
     if (guessPoint != null) {
       Point2D guessScreenPoint = getMapPointLatLong(guessPoint);

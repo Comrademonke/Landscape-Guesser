@@ -13,6 +13,7 @@ public class LevelsController {
   @FXML private Button levelThreeButton;
 
   private GUI360JFxController GUI360Controller;
+  private GuessingRoomController guessingRoomController;
 
   @FXML
   private void initialize() {
@@ -22,6 +23,10 @@ public class LevelsController {
 
   public void setGUI360Controller(GUI360JFxController GUI360Controller) {
     this.GUI360Controller = GUI360Controller;
+  }
+
+  public void setGuessingRoomController(GuessingRoomController guessingRoomController) {
+    this.guessingRoomController = guessingRoomController;
   }
 
   @FXML
@@ -48,6 +53,7 @@ public class LevelsController {
   public void switchToLevel(String level, int numberLevel, ActionEvent event) {
 
     GUI360Controller.panoramaPicker(level);
+    guessingRoomController.setLatitudeLongitude(numberLevel);
 
     App app = App.getInstance();
     if (app != null) {
