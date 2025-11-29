@@ -6,6 +6,7 @@ import javafx.geometry.Point2D;
 import javafx.scene.Node;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import javafx.scene.shape.Line;
 
 public class CustomMapLayer extends MapLayer {
   private final Node marker;
@@ -15,7 +16,17 @@ public class CustomMapLayer extends MapLayer {
   // Temporary stand in point
   private MapPoint targetPoint = new MapPoint(0.0, 0.0);
 
+  private Line line;
+
   public CustomMapLayer() {
+    // Line from guess to target
+    line = new Line();
+    line.setStroke(Color.BLACK);
+    line.setStrokeWidth(2);
+    line.getStrokeDashArray().addAll(5.0, 5.0);
+    line.setVisible(false);
+    getChildren().add(line);
+
     // Target marker
     marker = new Circle(5, Color.RED);
     marker.setVisible(false);
@@ -49,9 +60,22 @@ public class CustomMapLayer extends MapLayer {
     layoutLayer();
   }
 
+  public void drawConnectionLine() {
+    Point2D targetScreenPoint = getMapPointLatLong(targetPoint);
+    Point2D guessScreenPoint = getMapPointLatLong(guessPoint);
+    line.setStartX(targetScreenPoint.getX());
+    line.setStartY(targetScreenPoint.getY());
+    line.setEndX(guessScreenPoint.getX());
+    line.setEndY(guessScreenPoint.getY());
+  }
+
+  public void updateLineVisibility(boolean isLineVisible) {
+    line.setVisible(isLineVisible);
+  }
+
   @Override
   protected void layoutLayer() {
-    Point2D targetScreenPoint = getMapPoint(targetPoint.getLatitude(), targetPoint.getLongitude());
+    Point2D targetScreenPoint = getMapPointLatLong(targetPoint);
     marker.setTranslateX(targetScreenPoint.getX());
     marker.setTranslateY(targetScreenPoint.getY());
 
@@ -59,6 +83,7 @@ public class CustomMapLayer extends MapLayer {
       Point2D guessScreenPoint = getMapPointLatLong(guessPoint);
       guessingMarker.setTranslateX(guessScreenPoint.getX());
       guessingMarker.setTranslateY(guessScreenPoint.getY());
+      drawConnectionLine();
     }
   }
 

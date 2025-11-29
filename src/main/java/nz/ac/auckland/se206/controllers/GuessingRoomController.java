@@ -176,6 +176,7 @@ public class GuessingRoomController {
 
       customMapLayer.updateGuessMarkerVisibility(false);
       customMapLayer.updateTargetMarkerVisibility(false);
+      customMapLayer.updateLineVisibility(false);
       customMapLayer.updateGuessMarker(new MapPoint(0.0, 0.0));
 
       switchToLevelScene();
@@ -186,6 +187,7 @@ public class GuessingRoomController {
     mapDisplay.setDisable(true);
     returnButton.setDisable(true);
     customMapLayer.updateTargetMarkerVisibility(true);
+    customMapLayer.updateLineVisibility(true);
   }
 
   public void setLatitudeLongitude(int value) {
