@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import nz.ac.auckland.se206.App;
+import nz.ac.auckland.se206.CustomMapLayer;
 
 public class GuessingRoomController {
 
@@ -22,10 +23,18 @@ public class GuessingRoomController {
   private double dragStartY;
   private MapPoint dragStartCenter;
   private double currentZoom = 3.0;
+  private CustomMapLayer customMapLayer;
 
   @FXML
   private void initialize() {
     setupMap();
+    setupMarkers();
+  }
+
+  private void setupMarkers() {
+    customMapLayer = new CustomMapLayer();
+
+    mapView.addLayer(customMapLayer);
   }
 
   private void setupMap() {
