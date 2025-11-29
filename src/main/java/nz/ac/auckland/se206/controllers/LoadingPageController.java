@@ -49,6 +49,7 @@ public class LoadingPageController {
     progressProperty.addListener(
         (obs, oldVal, newVal) -> {
           loadingLabel.setText(String.format("%.0f%%", newVal.doubleValue() * 100));
+          imageProgress.setLayoutX(78 + (newVal.doubleValue() * 1300));
           enableStartButton(newVal.doubleValue() * 100);
         });
 

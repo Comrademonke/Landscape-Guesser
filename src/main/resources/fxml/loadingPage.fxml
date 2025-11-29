@@ -49,8 +49,13 @@
       <Button fx:id="switchButton" contentDisplay="RIGHT" disable="true" layoutX="559.0" layoutY="466.0" mnemonicParsing="false" onAction="#switchScene" prefHeight="107.0" prefWidth="406.0" stylesheets="@../css/loadingPage.css" text="Explore">
          <font>
             <Font size="20.0" />
-         </font></Button>
-
+         </font>
+      </Button>
+            <ImageView fx:id="imageProgress" fitHeight="107.0" fitWidth="199.0" layoutX="84.0" layoutY="622.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/animalCharacters/bearCharacter.png" />
+         </image>
+      </ImageView>
       <Label fx:id="landscapeLabel" alignment="CENTER" layoutX="2.0" layoutY="82.0" prefHeight="171.0" prefWidth="1534.0" stylesheets="@../css/loadingPage.css" text="Landscape" textFill="#00ff44">
          <font>
             <Font size="150.0" />
