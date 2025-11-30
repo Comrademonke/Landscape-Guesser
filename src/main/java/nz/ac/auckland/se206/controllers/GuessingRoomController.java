@@ -356,4 +356,8 @@ public class GuessingRoomController {
 
     scoreLabel.setText("Score:\n" + (int) totalScore);
   }
+
+  public int getScore() {
+    return (int) totalScore;
+  }
 }

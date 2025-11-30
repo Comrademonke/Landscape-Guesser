@@ -314,4 +314,16 @@ public class LevelsController {
             new KeyFrame(Duration.millis(400), new KeyValue(scoreBoard.layoutXProperty(), endX)));
     timeline.play();
   }
+
+  public void getGuessingScore() {
+    int totalScore = guessingRoomController.getScore();
+
+    scoreLabel.setText("Score:\n" + totalScore);
+  }
+
+  @FXML
+  private void updateGuessingScore() {
+    // When mouse moves update the guessing score
+    getGuessingScore();
+  }
 }
