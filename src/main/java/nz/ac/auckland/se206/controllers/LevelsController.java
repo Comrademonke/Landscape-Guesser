@@ -1,10 +1,17 @@
 package nz.ac.auckland.se206.controllers;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
 import nz.ac.auckland.se206.App;
 
@@ -33,11 +40,18 @@ public class LevelsController {
   @FXML private ImageView ratImage;
   @FXML private ImageView chickenImage;
 
+  @FXML private StackPane scoreBoard;
+  @FXML private Label scoreLabel;
+
+  private boolean isScoreBoardVisible = false;
+
   private GUI360JFxController GUI360Controller;
   private GuessingRoomController guessingRoomController;
 
   @FXML
-  private void initialize() {}
+  private void initialize() {
+    scoreBoard.setLayoutX(2000);
+  }
 
   public void setGUI360Controller(GUI360JFxController GUI360Controller) {
     this.GUI360Controller = GUI360Controller;
@@ -255,5 +269,49 @@ public class LevelsController {
   @FXML
   private void moveChickenDown() {
     moveAnimals(chickenImage, 0);
+  }
+
+  @FXML
+  private void moveScoreboard(KeyEvent event) {
+    KeyCode code = event.getCode();
+
+    if (code == KeyCode.Q) {
+      event.consume();
+      toggleScoreBoardPosition();
+    }
+  }
+
+  private void toggleScoreBoardPosition() {
+    if (isScoreBoardVisible) {
+      flyOutAnimation();
+    } else {
+      flyInAnimation();
+    }
+    isScoreBoardVisible = !isScoreBoardVisible;
+  }
+
+  private void flyOutAnimation() {
+    double startX = 1068.0;
+    double endX = 2000;
+
+    Timeline timeline =
+        new Timeline(
+            new KeyFrame(Duration.ZERO, new KeyValue(scoreBoard.layoutXProperty(), startX)),
+            new KeyFrame(Duration.millis(400), new KeyValue(scoreBoard.layoutXProperty(), endX)));
+    timeline.play();
+  }
+
+  private void flyInAnimation() {
+    double startX = 2000;
+    double endX = 1068.0;
+
+    scoreBoard.setLayoutX(startX);
+    scoreBoard.setVisible(true);
+
+    Timeline timeline =
+        new Timeline(
+            new KeyFrame(Duration.ZERO, new KeyValue(scoreBoard.layoutXProperty(), startX)),
+            new KeyFrame(Duration.millis(400), new KeyValue(scoreBoard.layoutXProperty(), endX)));
+    timeline.play();
   }
 }
