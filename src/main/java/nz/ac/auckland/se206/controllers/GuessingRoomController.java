@@ -29,9 +29,10 @@ public class GuessingRoomController {
   @FXML private MapView mapViewFiller;
   @FXML private Label distanceLabel;
   @FXML private StackPane scoreBoard;
+  @FXML private Label scoreLabel;
 
   private boolean isScoreBoardVisible = false;
-
+  private double totalScore = 0.0;
   private double dragStartX;
   private double dragStartY;
   private MapPoint dragStartCenter;
@@ -229,6 +230,8 @@ public class GuessingRoomController {
     double distanceMeters = distanceKm * 1000;
     String formattedDistance = String.format("%,d", (int) distanceMeters);
 
+    updateScore(distanceMeters);
+
     // Display the distance
     distanceLabel.setVisible(true);
     distanceLabel.setText("Your guess was " + formattedDistance + " meters away.");
@@ -345,5 +348,12 @@ public class GuessingRoomController {
             new KeyFrame(Duration.ZERO, new KeyValue(scoreBoard.layoutXProperty(), startX)),
             new KeyFrame(Duration.millis(400), new KeyValue(scoreBoard.layoutXProperty(), endX)));
     timeline.play();
+  }
+
+  public void updateScore(double distance) {
+    double currentScore = 5000 * Math.exp(-0.5 * distance / 14916.86);
+    totalScore += currentScore;
+
+    scoreLabel.setText("Score:\n" + (int) totalScore);
   }
 }

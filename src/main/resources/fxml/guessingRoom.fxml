@@ -45,7 +45,7 @@
       <StackPane fx:id="scoreBoard" layoutX="1068.0" layoutY="171.0" prefHeight="150.0" prefWidth="200.0">
          <children>
             <Polygon fill="#00ff44" points="-234.0, 182.35330200195312, -314.0, 38.176513671875, 155.5999755859375, 38.17664337158203, 155.0, 182.35330200195312" stroke="#00ff44" strokeType="INSIDE" />
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="140.0" prefWidth="310.0" stylesheets="@../css/guessingRoom.css" text="Score:&#10;0">
+            <Label fx:id="scoreLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="140.0" prefWidth="310.0" stylesheets="@../css/guessingRoom.css" text="Score:&#10;0">
                <font>
                   <Font size="48.0" />
                </font>
