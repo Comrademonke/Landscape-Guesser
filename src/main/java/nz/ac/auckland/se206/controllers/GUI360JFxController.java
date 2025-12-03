@@ -172,138 +172,119 @@ public class GUI360JFxController {
             //   i++;
             // }
 
-            int totalSteps = 60;
             int currentStep = 0;
 
             for (int i = 0; i < 6; i++) {
               BufferedImage originalImage =
                   ImageIO.read(
-                      getClass().getResource("/images/panoramas/levelOnePanorama" + i + ".jpg"));
+                      getClass()
+                          .getResource("/images/panoramasSet1/levelOnePanorama" + i + ".jpg"));
               BufferedImage compressedImage = scaleImage(originalImage, 0.5);
               skyBoxImageLevel1[i] = compressedImage;
 
-              currentStep++;
-
-              double progress = currentStep / (double) totalSteps;
-              updateProgress(progress * 100, 100.0);
+              updateProgress(returnProgress(currentStep++) * 100, 100.0);
             }
 
             for (int i = 0; i < 6; i++) {
               BufferedImage originalImage =
                   ImageIO.read(
-                      getClass().getResource("/images/panoramas/levelTwoPanorama" + i + ".jpg"));
+                      getClass()
+                          .getResource("/images/panoramasSet1/levelTwoPanorama" + i + ".jpg"));
               BufferedImage compressedImage = scaleImage(originalImage, 0.5);
               skyBoxImageLevel2[i] = compressedImage;
 
-              currentStep++;
-
-              double progress = currentStep / (double) totalSteps;
-              updateProgress(progress * 100, 100.0);
+              updateProgress(returnProgress(currentStep++) * 100, 100.0);
             }
 
             for (int i = 0; i < 6; i++) {
               BufferedImage originalImage =
                   ImageIO.read(
-                      getClass().getResource("/images/panoramas/levelThreePanorama" + i + ".jpg"));
+                      getClass()
+                          .getResource("/images/panoramasSet1/levelThreePanorama" + i + ".jpg"));
               BufferedImage compressedImage = scaleImage(originalImage, 0.5);
               skyBoxImageLevel3[i] = compressedImage;
 
-              currentStep++;
-
-              double progress = currentStep / (double) totalSteps;
-              updateProgress(progress * 100, 100.0);
+              updateProgress(returnProgress(currentStep++) * 100, 100.0);
             }
 
             for (int i = 0; i < 6; i++) {
               BufferedImage originalImage =
                   ImageIO.read(
-                      getClass().getResource("/images/panoramas/levelFourPanorama" + i + ".jpg"));
+                      getClass()
+                          .getResource("/images/panoramasSet1/levelFourPanorama" + i + ".jpg"));
               BufferedImage compressedImage = scaleImage(originalImage, 0.5);
               skyBoxImageLevel4[i] = compressedImage;
 
-              currentStep++;
-
-              double progress = currentStep / (double) totalSteps;
-              updateProgress(progress * 100, 100.0);
+              updateProgress(returnProgress(currentStep++) * 100, 100.0);
             }
 
             for (int i = 0; i < 6; i++) {
               BufferedImage originalImage =
                   ImageIO.read(
-                      getClass().getResource("/images/panoramas/levelFivePanorama" + i + ".jpg"));
+                      getClass()
+                          .getResource("/images/panoramasSet1/levelFivePanorama" + i + ".jpg"));
               BufferedImage compressedImage = scaleImage(originalImage, 0.5);
               skyBoxImageLevel5[i] = compressedImage;
 
-              currentStep++;
-
-              double progress = currentStep / (double) totalSteps;
-              updateProgress(progress * 100, 100.0);
+              updateProgress(returnProgress(currentStep++) * 100, 100.0);
             }
 
             for (int i = 0; i < 6; i++) {
               BufferedImage originalImage =
                   ImageIO.read(
-                      getClass().getResource("/images/panoramas/levelSixPanorama" + i + ".jpg"));
+                      getClass()
+                          .getResource("/images/panoramasSet1/levelSixPanorama" + i + ".jpg"));
               BufferedImage compressedImage = scaleImage(originalImage, 0.5);
               skyBoxImageLevel6[i] = compressedImage;
 
-              currentStep++;
-
-              double progress = currentStep / (double) totalSteps;
-              updateProgress(progress * 100, 100.0);
+              updateProgress(returnProgress(currentStep++) * 100, 100.0);
             }
 
             for (int i = 0; i < 6; i++) {
               BufferedImage originalImage =
                   ImageIO.read(
-                      getClass().getResource("/images/panoramas/levelSevenPanorama" + i + ".jpg"));
+                      getClass()
+                          .getResource("/images/panoramasSet1/levelSevenPanorama" + i + ".jpg"));
               BufferedImage compressedImage = scaleImage(originalImage, 0.5);
               skyBoxImageLevel7[i] = compressedImage;
 
-              currentStep++;
-
-              double progress = currentStep / (double) totalSteps;
-              updateProgress(progress * 100, 100.0);
+              updateProgress(returnProgress(currentStep++) * 100, 100.0);
             }
 
             for (int i = 0; i < 6; i++) {
               BufferedImage originalImage =
                   ImageIO.read(
-                      getClass().getResource("/images/panoramas/levelEightPanorama" + i + ".jpg"));
+                      getClass()
+                          .getResource("/images/panoramasSet1/levelEightPanorama" + i + ".jpg"));
               BufferedImage compressedImage = scaleImage(originalImage, 0.5);
               skyBoxImageLevel8[i] = compressedImage;
 
-              currentStep++;
-
-              double progress = currentStep / (double) totalSteps;
-              updateProgress(progress * 100, 100.0);
+              updateProgress(returnProgress(currentStep++) * 100, 100.0);
             }
 
             for (int i = 0; i < 6; i++) {
               BufferedImage originalImage =
                   ImageIO.read(
-                      getClass().getResource("/images/panoramas/levelNinePanorama" + i + ".jpg"));
+                      getClass()
+                          .getResource("/images/panoramasSet1/levelNinePanorama" + i + ".jpg"));
               BufferedImage compressedImage = scaleImage(originalImage, 0.5);
               skyBoxImageLevel9[i] = compressedImage;
 
-              currentStep++;
-
-              double progress = currentStep / (double) totalSteps;
-              updateProgress(progress * 100, 100.0);
+              updateProgress(returnProgress(currentStep++) * 100, 100.0);
             }
 
             for (int i = 0; i < 6; i++) {
               BufferedImage originalImage =
                   ImageIO.read(
-                      getClass().getResource("/images/panoramas/levelTenPanorama" + i + ".jpg"));
+                      getClass()
+                          .getResource("/images/panoramasSet1/levelTenPanorama" + i + ".jpg"));
               BufferedImage compressedImage = scaleImage(originalImage, 0.5);
               skyBoxImageLevel10[i] = compressedImage;
 
-              currentStep++;
-
-              double progress = currentStep / (double) totalSteps;
-              updateProgress(progress * 100, 100.0);
+              updateProgress(returnProgress(currentStep++) * 100, 100.0);
             }
+
+            updateProgress(returnProgress(currentStep++) * 100, 100.0);
 
             skyBoxImages = skyBoxImageLevel1;
             openPanoramaImage();
@@ -330,6 +311,10 @@ public class GUI360JFxController {
         event -> {
           System.out.println("panorama loading completed");
         });
+  }
+
+  private double returnProgress(int step) {
+    return step / (double) 60.0;
   }
 
   private BufferedImage scaleImage(BufferedImage original, double scale) {
