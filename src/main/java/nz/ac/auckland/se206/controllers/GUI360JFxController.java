@@ -159,17 +159,18 @@ public class GUI360JFxController {
           @Override
           protected Void call() throws Exception {
             // Storing images here
-            // java.net.URL imageUrl = getClass().getResource("/images/HukaFalls.jpg");
+            // java.net.URL imageUrl =
+            //     getClass().getResource("/images/unprocessedSet2Panoramas/Reykjavik.jpg");
             // BufferedImage image = ImageIO.read(imageUrl);
             // skyBoxImages = EquirectangularToCubic.processImage(image);
 
-            // int i = 0;
-            // for (BufferedImage imagee : skyboxImages) {
+            // int j = 0;
+            // for (BufferedImage imagee : skyBoxImages) {
             //   saveBufferedImage(
             //       imagee,
             //       "jpg",
-            //       "src/main/resources/images/panoramas/levelsTenPanorama" + i + ".jpg");
-            //   i++;
+            //       "src/main/resources/images/panoramasSet2/levelTenPanorama" + j + ".jpg");
+            //   j++;
             // }
 
             int currentStep = 0;

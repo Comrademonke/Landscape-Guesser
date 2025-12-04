@@ -306,6 +306,29 @@ public class GuessingRoomController {
     latitudeLongitudeCoordinates.put(10, new double[] {-38.6496475, 176.0894571});
   }
 
+  public void initializeLatitudeLongitudeCoordinates2() {
+    // New York
+    latitudeLongitudeCoordinates.put(1, new double[] {40.7579204, -73.9854278});
+    // Madrid
+    latitudeLongitudeCoordinates.put(2, new double[] {40.420241, -3.6882143});
+    // Budapest
+    latitudeLongitudeCoordinates.put(3, new double[] {47.513851, 19.0776516});
+    // Cape Town
+    latitudeLongitudeCoordinates.put(4, new double[] {-33.9497494, 18.3785152});
+    // Campinas
+    latitudeLongitudeCoordinates.put(5, new double[] {-22.9038587, -47.0566533});
+    // Helsinki
+    latitudeLongitudeCoordinates.put(6, new double[] {60.1711584, 24.9327061});
+    // Dubai
+    latitudeLongitudeCoordinates.put(7, new double[] {25.2428645, 55.3097369});
+    // Dushanbe
+    latitudeLongitudeCoordinates.put(8, new double[] {38.5678291, 68.7936325});
+    // Edmonton
+    latitudeLongitudeCoordinates.put(9, new double[] {53.5588149, -113.5520091});
+    // Reykjavik
+    latitudeLongitudeCoordinates.put(10, new double[] {64.142474, -21.9484259});
+  }
+
   @FXML
   private void moveScoreboard(KeyEvent event) {
     KeyCode code = event.getCode();
