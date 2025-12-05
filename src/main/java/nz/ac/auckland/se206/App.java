@@ -61,6 +61,7 @@ public class App extends Application {
     // Inject controller
     levelsController.setGUI360Controller(GUI360JFxController);
     levelsController.setGuessingRoomController(guessingRoomController);
+    GUI360JFxController.setGuessingRoomController(guessingRoomController);
 
     GUI360JFxController.initialize();
 
