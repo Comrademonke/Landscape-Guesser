@@ -39,13 +39,16 @@ public class GuessingRoomController {
   private double currentZoom = 3.0;
   private CustomMapLayer customMapLayer;
   private MapPoint guessMarker;
+  private HashMap<Integer, double[]> TargetLatitudeLongitudeCoordinates = new HashMap<>();
   private HashMap<Integer, double[]> latitudeLongitudeCoordinates = new HashMap<>();
+  private HashMap<Integer, double[]> latitudeLongitudeCoordinates1 = new HashMap<>();
 
   @FXML
-  private void initialize() {
+  public void initialize() {
     setupMap();
     setupMarkers();
     initializeLatitudeLongitudeCoordinates();
+    initializeLatitudeLongitudeCoordinates1();
 
     scoreBoard.setLayoutX(2000);
   }
@@ -273,7 +276,7 @@ public class GuessingRoomController {
 
   public void setLatitudeLongitude(int value) {
     // Assign values to latitude and longitude
-    double[] coordinates = latitudeLongitudeCoordinates.get(value);
+    double[] coordinates = TargetLatitudeLongitudeCoordinates.get(value);
 
     double latitude = coordinates[0];
     double longitude = coordinates[1];
@@ -306,27 +309,39 @@ public class GuessingRoomController {
     latitudeLongitudeCoordinates.put(10, new double[] {-38.6496475, 176.0894571});
   }
 
-  public void initializeLatitudeLongitudeCoordinates2() {
+  public void initializeLatitudeLongitudeCoordinates1() {
     // New York
-    latitudeLongitudeCoordinates.put(1, new double[] {40.7579204, -73.9854278});
+    latitudeLongitudeCoordinates1.put(1, new double[] {40.7579204, -73.9854278});
     // Madrid
-    latitudeLongitudeCoordinates.put(2, new double[] {40.420241, -3.6882143});
+    latitudeLongitudeCoordinates1.put(2, new double[] {40.420241, -3.6882143});
     // Budapest
-    latitudeLongitudeCoordinates.put(3, new double[] {47.513851, 19.0776516});
+    latitudeLongitudeCoordinates1.put(3, new double[] {47.513851, 19.0776516});
     // Cape Town
-    latitudeLongitudeCoordinates.put(4, new double[] {-33.9497494, 18.3785152});
+    latitudeLongitudeCoordinates1.put(4, new double[] {-33.9497494, 18.3785152});
     // Campinas
-    latitudeLongitudeCoordinates.put(5, new double[] {-22.9038587, -47.0566533});
+    latitudeLongitudeCoordinates1.put(5, new double[] {-22.9038587, -47.0566533});
     // Helsinki
-    latitudeLongitudeCoordinates.put(6, new double[] {60.1711584, 24.9327061});
+    latitudeLongitudeCoordinates1.put(6, new double[] {60.1711584, 24.9327061});
     // Dubai
-    latitudeLongitudeCoordinates.put(7, new double[] {25.2428645, 55.3097369});
+    latitudeLongitudeCoordinates1.put(7, new double[] {25.2428645, 55.3097369});
     // Dushanbe
-    latitudeLongitudeCoordinates.put(8, new double[] {38.5678291, 68.7936325});
+    latitudeLongitudeCoordinates1.put(8, new double[] {38.5678291, 68.7936325});
     // Edmonton
-    latitudeLongitudeCoordinates.put(9, new double[] {53.5588149, -113.5520091});
+    latitudeLongitudeCoordinates1.put(9, new double[] {53.5588149, -113.5520091});
     // Reykjavik
-    latitudeLongitudeCoordinates.put(10, new double[] {64.142474, -21.9484259});
+    latitudeLongitudeCoordinates1.put(10, new double[] {64.142474, -21.9484259});
+  }
+
+  public void createTargetLocations(int[] array) {
+    int i = 1;
+    for (Integer set : array) {
+      if (set == 1) {
+        TargetLatitudeLongitudeCoordinates.put(i, latitudeLongitudeCoordinates.get(i));
+      } else {
+        TargetLatitudeLongitudeCoordinates.put(i, latitudeLongitudeCoordinates1.get(i));
+      }
+      i++;
+    }
   }
 
   @FXML

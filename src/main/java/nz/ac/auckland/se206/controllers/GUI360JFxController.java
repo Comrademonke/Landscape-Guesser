@@ -5,6 +5,7 @@ import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.Random;
 import javafx.application.Platform;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
@@ -52,6 +53,9 @@ public class GUI360JFxController {
   private BufferedImage[] skyBoxImageLevel10 = new BufferedImage[6];
 
   private javafx.scene.image.Image[] skyboxImagesFx;
+  private int[] randomNumbers;
+  private GuessingRoomController guessingRoomController;
+  private boolean firstTime = true;
 
   public void initialize() {
     root3D = new Group();
@@ -153,6 +157,14 @@ public class GUI360JFxController {
   public void setUpPanoramas() {
     LoadingPageController loadingPageController = App.getInstance().getLoadingController();
 
+    randomNumbers = new int[10];
+    Random random = new Random();
+
+    for (int i = 0; i < randomNumbers.length; i++) {
+      // Random number between 1-2
+      randomNumbers[i] = random.nextInt(2) + 1;
+    }
+
     // Set up a task to load other panoramas
     Task<Void> panoramas =
         new Task<Void>() {
@@ -179,7 +191,12 @@ public class GUI360JFxController {
               BufferedImage originalImage =
                   ImageIO.read(
                       getClass()
-                          .getResource("/images/panoramasSet1/levelOnePanorama" + i + ".jpg"));
+                          .getResource(
+                              "/images/panoramasSet"
+                                  + randomNumbers[0]
+                                  + "/levelOnePanorama"
+                                  + i
+                                  + ".jpg"));
               BufferedImage compressedImage = scaleImage(originalImage, 0.5);
               skyBoxImageLevel1[i] = compressedImage;
 
@@ -190,7 +207,12 @@ public class GUI360JFxController {
               BufferedImage originalImage =
                   ImageIO.read(
                       getClass()
-                          .getResource("/images/panoramasSet1/levelTwoPanorama" + i + ".jpg"));
+                          .getResource(
+                              "/images/panoramasSet"
+                                  + randomNumbers[1]
+                                  + "/levelTwoPanorama"
+                                  + i
+                                  + ".jpg"));
               BufferedImage compressedImage = scaleImage(originalImage, 0.5);
               skyBoxImageLevel2[i] = compressedImage;
 
@@ -201,7 +223,12 @@ public class GUI360JFxController {
               BufferedImage originalImage =
                   ImageIO.read(
                       getClass()
-                          .getResource("/images/panoramasSet1/levelThreePanorama" + i + ".jpg"));
+                          .getResource(
+                              "/images/panoramasSet"
+                                  + randomNumbers[2]
+                                  + "/levelThreePanorama"
+                                  + i
+                                  + ".jpg"));
               BufferedImage compressedImage = scaleImage(originalImage, 0.5);
               skyBoxImageLevel3[i] = compressedImage;
 
@@ -212,7 +239,12 @@ public class GUI360JFxController {
               BufferedImage originalImage =
                   ImageIO.read(
                       getClass()
-                          .getResource("/images/panoramasSet1/levelFourPanorama" + i + ".jpg"));
+                          .getResource(
+                              "/images/panoramasSet"
+                                  + randomNumbers[3]
+                                  + "/levelFourPanorama"
+                                  + i
+                                  + ".jpg"));
               BufferedImage compressedImage = scaleImage(originalImage, 0.5);
               skyBoxImageLevel4[i] = compressedImage;
 
@@ -223,7 +255,12 @@ public class GUI360JFxController {
               BufferedImage originalImage =
                   ImageIO.read(
                       getClass()
-                          .getResource("/images/panoramasSet1/levelFivePanorama" + i + ".jpg"));
+                          .getResource(
+                              "/images/panoramasSet"
+                                  + randomNumbers[4]
+                                  + "/levelFivePanorama"
+                                  + i
+                                  + ".jpg"));
               BufferedImage compressedImage = scaleImage(originalImage, 0.5);
               skyBoxImageLevel5[i] = compressedImage;
 
@@ -234,7 +271,12 @@ public class GUI360JFxController {
               BufferedImage originalImage =
                   ImageIO.read(
                       getClass()
-                          .getResource("/images/panoramasSet1/levelSixPanorama" + i + ".jpg"));
+                          .getResource(
+                              "/images/panoramasSet"
+                                  + randomNumbers[5]
+                                  + "/levelSixPanorama"
+                                  + i
+                                  + ".jpg"));
               BufferedImage compressedImage = scaleImage(originalImage, 0.5);
               skyBoxImageLevel6[i] = compressedImage;
 
@@ -245,7 +287,12 @@ public class GUI360JFxController {
               BufferedImage originalImage =
                   ImageIO.read(
                       getClass()
-                          .getResource("/images/panoramasSet1/levelSevenPanorama" + i + ".jpg"));
+                          .getResource(
+                              "/images/panoramasSet"
+                                  + randomNumbers[6]
+                                  + "/levelSevenPanorama"
+                                  + i
+                                  + ".jpg"));
               BufferedImage compressedImage = scaleImage(originalImage, 0.5);
               skyBoxImageLevel7[i] = compressedImage;
 
@@ -256,7 +303,12 @@ public class GUI360JFxController {
               BufferedImage originalImage =
                   ImageIO.read(
                       getClass()
-                          .getResource("/images/panoramasSet1/levelEightPanorama" + i + ".jpg"));
+                          .getResource(
+                              "/images/panoramasSet"
+                                  + randomNumbers[7]
+                                  + "/levelEightPanorama"
+                                  + i
+                                  + ".jpg"));
               BufferedImage compressedImage = scaleImage(originalImage, 0.5);
               skyBoxImageLevel8[i] = compressedImage;
 
@@ -267,7 +319,12 @@ public class GUI360JFxController {
               BufferedImage originalImage =
                   ImageIO.read(
                       getClass()
-                          .getResource("/images/panoramasSet1/levelNinePanorama" + i + ".jpg"));
+                          .getResource(
+                              "/images/panoramasSet"
+                                  + randomNumbers[8]
+                                  + "/levelNinePanorama"
+                                  + i
+                                  + ".jpg"));
               BufferedImage compressedImage = scaleImage(originalImage, 0.5);
               skyBoxImageLevel9[i] = compressedImage;
 
@@ -278,7 +335,12 @@ public class GUI360JFxController {
               BufferedImage originalImage =
                   ImageIO.read(
                       getClass()
-                          .getResource("/images/panoramasSet1/levelTenPanorama" + i + ".jpg"));
+                          .getResource(
+                              "/images/panoramasSet"
+                                  + randomNumbers[9]
+                                  + "/levelTenPanorama"
+                                  + i
+                                  + ".jpg"));
               BufferedImage compressedImage = scaleImage(originalImage, 0.5);
               skyBoxImageLevel10[i] = compressedImage;
 
@@ -441,5 +503,17 @@ public class GUI360JFxController {
         break;
     }
     openPanoramaImage();
+    if (firstTime) {
+      setTargetCoordinates();
+      firstTime = false;
+    }
+  }
+
+  public void setGuessingRoomController(GuessingRoomController guessingRoomController) {
+    this.guessingRoomController = guessingRoomController;
+  }
+
+  public void setTargetCoordinates() {
+    guessingRoomController.createTargetLocations(randomNumbers);
   }
 }
