@@ -125,12 +125,12 @@
       <Pane fx:id="tutorialPane" prefHeight="801.0" prefWidth="1539.0">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#40ffb4" height="694.0" layoutX="108.0" layoutY="40.0" stroke="#00ffa0" strokeType="INSIDE" style="-fx-arc-height: 50; -fx-arc-width: 50; -fx-fill: linear-gradient(to bottom, #44c767 0%, #5cbf2a 100%);" width="1326.0" />
-            <Label alignment="CENTER" layoutX="112.0" layoutY="50.0" prefHeight="135.0" prefWidth="1319.0" stylesheets="@../css/loadingPage.css" text="Press q to toggle scoreboard">
+            <Label fx:id="tutorialLabel" alignment="CENTER" layoutX="112.0" layoutY="50.0" prefHeight="135.0" prefWidth="1319.0" styleClass="label-tutorial" stylesheets="@../css/loadingPage.css" text="Press q to toggle scoreboard">
                <font>
                   <Font size="75.0" />
                </font>
             </Label>
-            <ImageView fitHeight="522.0" fitWidth="1037.0" layoutX="264.0" layoutY="190.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="tutorialView" fitHeight="522.0" fitWidth="1037.0" layoutX="264.0" layoutY="190.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/scoreboardTutorial.gif" />
                </image>

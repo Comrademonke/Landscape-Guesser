@@ -10,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.Slider;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.media.Media;
@@ -36,13 +37,18 @@ public class LoadingPageController {
   @FXML private Slider soundBar;
   @FXML private Pane tutorialPane;
   @FXML private Button goLeftButton;
-  @FXML private Button goRightButton;
+  @FXML private ImageView tutorialView;
+  @FXML private Label tutorialLabel;
 
   private MediaPlayer mediaPlayer;
   private DoubleProperty progressProperty = new SimpleDoubleProperty(0);
   private boolean isSettingsOpen = false;
   private boolean isTutorialOpen = false;
   private int tutorialPage = 0;
+  private Image scoreboardGif =
+      new Image(getClass().getResource("/images/scoreboardTutorial.gif").toString());
+  private Image panningGif =
+      new Image(getClass().getResource("/images/panningTutorial.gif").toString());
 
   @FXML
   private void initialize() {
@@ -175,21 +181,31 @@ public class LoadingPageController {
 
   @FXML
   private void onGoPrevious() {
-    tutorialPageUpdate();
     tutorialPage--;
+    tutorialPageUpdate();
   }
 
   @FXML
   private void onGoNext() {
-    tutorialPageUpdate();
     tutorialPage++;
+    tutorialPageUpdate();
   }
 
   private void tutorialPageUpdate() {
     // Update settings
     if (tutorialPage == 0) {
+      goLeftButton.setDisable(true);
+      goLeftButton.setVisible(false);
+
+      tutorialLabel.setText("Press q to toggle scoreboard");
+      tutorialView.setImage(scoreboardGif);
 
     } else if (tutorialPage == 1) {
+      goLeftButton.setDisable(false);
+      goLeftButton.setVisible(true);
+
+      tutorialLabel.setText("Use mouse to pan and zoom");
+      tutorialView.setImage(panningGif);
 
     } else {
       onExitTutorial();
