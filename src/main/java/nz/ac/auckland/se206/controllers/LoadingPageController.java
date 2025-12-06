@@ -49,6 +49,8 @@ public class LoadingPageController {
       new Image(getClass().getResource("/images/scoreboardTutorial.gif").toString());
   private Image panningGif =
       new Image(getClass().getResource("/images/panningTutorial.gif").toString());
+  private Image togglingGif =
+      new Image(getClass().getResource("/images/togglingTutorial.gif").toString());
 
   @FXML
   private void initialize() {
@@ -204,9 +206,8 @@ public class LoadingPageController {
       goLeftButton.setDisable(false);
       goLeftButton.setVisible(true);
 
-      tutorialLabel.setText("View in guessing and level stages");
-      // Change to map gif
-      tutorialView.setImage(panningGif);
+      tutorialLabel.setText("Available in Guessing stage");
+      tutorialView.setImage(togglingGif);
 
     } else if (tutorialPage == 2) {
 
