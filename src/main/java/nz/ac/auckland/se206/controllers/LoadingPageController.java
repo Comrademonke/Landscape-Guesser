@@ -204,6 +204,12 @@ public class LoadingPageController {
       goLeftButton.setDisable(false);
       goLeftButton.setVisible(true);
 
+      tutorialLabel.setText("View in guessing and level stages");
+      // Change to map gif
+      tutorialView.setImage(panningGif);
+
+    } else if (tutorialPage == 2) {
+
       tutorialLabel.setText("Use mouse to pan and zoom");
       tutorialView.setImage(panningGif);
 
