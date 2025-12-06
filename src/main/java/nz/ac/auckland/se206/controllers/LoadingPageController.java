@@ -1,5 +1,7 @@
 package nz.ac.auckland.se206.controllers;
 
+import java.awt.Desktop.Action;
+
 import javafx.animation.RotateTransition;
 import javafx.animation.TranslateTransition;
 import javafx.beans.property.DoubleProperty;
@@ -10,6 +12,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.text.Font;
@@ -30,9 +33,11 @@ public class LoadingPageController {
   @FXML private ImageView monkeyAnimal;
   @FXML private ImageView giraffeAnimal;
   @FXML private ImageView foxAnimal;
+  @FXML private Pane settingsPane;
 
   private MediaPlayer mediaPlayer;
   private DoubleProperty progressProperty = new SimpleDoubleProperty(0);
+  private boolean isSettingsOpen = false;
 
   @FXML
   private void initialize() {
@@ -41,6 +46,10 @@ public class LoadingPageController {
     monkeyAnimal.setVisible(false);
     giraffeAnimal.setVisible(false);
     foxAnimal.setVisible(false);
+
+    isSettingsOpen = false;
+    settingsPane.setDisable(!isSettingsOpen);
+    settingsPane.setVisible(isSettingsOpen);
 
     playMusic();
 
@@ -115,5 +124,12 @@ public class LoadingPageController {
     if (app != null) {
       app.switchToLevelScene();
     }
+  }
+
+  @FXML
+  private void onOpenSettings(ActionEvent event){
+    isSettingsOpen = true;
+    settingsPane.setDisable(!isSettingsOpen);
+    settingsPane.setVisible(isSettingsOpen);
   }
 }
