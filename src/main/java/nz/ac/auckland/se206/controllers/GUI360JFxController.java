@@ -21,6 +21,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.transform.Rotate;
 import javax.imageio.ImageIO;
 import nz.ac.auckland.se206.App;
+import nz.ac.auckland.se206.Util.EquirectangularToCubic;
 import org.fxyz3d.scene.Skybox;
 
 public class GUI360JFxController {
@@ -161,8 +162,8 @@ public class GUI360JFxController {
     Random random = new Random();
 
     for (int i = 0; i < randomNumbers.length; i++) {
-      // Random number between 1-2
-      randomNumbers[i] = random.nextInt(2) + 1;
+      // Random number between 1-4
+      randomNumbers[i] = random.nextInt(4) + 1;
     }
 
     // Set up a task to load other panoramas
@@ -172,7 +173,7 @@ public class GUI360JFxController {
           protected Void call() throws Exception {
             // Storing images here
             // java.net.URL imageUrl =
-            //     getClass().getResource("/images/unprocessedSet2Panoramas/Reykjavik.jpg");
+            //     getClass().getResource("/images/unprocessedSet5Panoramas/Melbourne.jpg");
             // BufferedImage image = ImageIO.read(imageUrl);
             // skyBoxImages = EquirectangularToCubic.processImage(image);
 
@@ -181,7 +182,7 @@ public class GUI360JFxController {
             //   saveBufferedImage(
             //       imagee,
             //       "jpg",
-            //       "src/main/resources/images/panoramasSet2/levelTenPanorama" + j + ".jpg");
+            //       "src/main/resources/images/panoramasSet5/levelTenPanorama" + j + ".jpg");
             //   j++;
             // }
 
