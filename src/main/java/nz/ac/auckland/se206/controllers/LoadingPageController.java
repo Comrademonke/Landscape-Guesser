@@ -208,6 +208,7 @@ public class LoadingPageController {
       tutorialView.setImage(panningGif);
 
     } else {
+      tutorialPage--;
       onExitTutorial();
     }
     return;
