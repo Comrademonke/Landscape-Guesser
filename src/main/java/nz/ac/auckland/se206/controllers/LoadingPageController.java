@@ -1,7 +1,5 @@
 package nz.ac.auckland.se206.controllers;
 
-import java.awt.Desktop.Action;
-
 import javafx.animation.RotateTransition;
 import javafx.animation.TranslateTransition;
 import javafx.beans.property.DoubleProperty;
@@ -11,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.control.Slider;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.media.Media;
@@ -34,6 +33,7 @@ public class LoadingPageController {
   @FXML private ImageView giraffeAnimal;
   @FXML private ImageView foxAnimal;
   @FXML private Pane settingsPane;
+  @FXML private Slider soundBar;
 
   private MediaPlayer mediaPlayer;
   private DoubleProperty progressProperty = new SimpleDoubleProperty(0);
@@ -50,6 +50,15 @@ public class LoadingPageController {
     isSettingsOpen = false;
     settingsPane.setDisable(!isSettingsOpen);
     settingsPane.setVisible(isSettingsOpen);
+
+    soundBar.setValue(30.0);
+
+    soundBar
+        .valueProperty()
+        .addListener(
+            (observableValue, number, newValue) -> {
+              mediaPlayer.setVolume(newValue.doubleValue() / 100);
+            });
 
     playMusic();
 
@@ -127,14 +136,14 @@ public class LoadingPageController {
   }
 
   @FXML
-  private void onOpenSettings(ActionEvent event){
+  private void onOpenSettings(ActionEvent event) {
     isSettingsOpen = true;
     settingsPane.setDisable(!isSettingsOpen);
     settingsPane.setVisible(isSettingsOpen);
   }
 
-    @FXML
-  private void onExitSettings(ActionEvent event){
+  @FXML
+  private void onExitSettings(ActionEvent event) {
     isSettingsOpen = false;
     settingsPane.setDisable(!isSettingsOpen);
     settingsPane.setVisible(isSettingsOpen);

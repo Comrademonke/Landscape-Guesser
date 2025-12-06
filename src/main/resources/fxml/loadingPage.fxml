@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.Slider?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
@@ -75,11 +77,19 @@
                </image>
             </ImageView>
          </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Button>
       <Pane fx:id="settingsPane" layoutX="-1.0" prefHeight="801.0" prefWidth="1539.0">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#069406" height="820.0" layoutX="-8.0" layoutY="-9.0" opacity="0.4" stroke="BLACK" strokeType="INSIDE" width="1560.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#40ffb4" height="651.0" layoutX="377.0" layoutY="78.0" stroke="#00ffa0" strokeType="INSIDE" style="-fx-arc-height: 50; -fx-arc-width: 50; -fx-fill: linear-gradient(to bottom, #44c767 0%, #5cbf2a 100%);" width="800.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#40ffb4" height="651.0" layoutX="386.0" layoutY="75.0" stroke="#00ffa0" strokeType="INSIDE" style="-fx-arc-height: 50; -fx-arc-width: 50; -fx-fill: linear-gradient(to bottom, #44c767 0%, #5cbf2a 100%);" width="800.0" />
+            <Button layoutX="486.0" layoutY="458.0" mnemonicParsing="false" prefHeight="155.0" prefWidth="612.0" styleClass="button-help" stylesheets="@../css/loadingPage.css" text="How To Play">
+               <font>
+                  <Font size="34.0" />
+               </font>
+            </Button>
             <Label alignment="CENTER" layoutX="376.0" layoutY="76.0" prefHeight="149.0" prefWidth="801.0" styleClass="label-settings" stylesheets="@../css/loadingPage.css" text="  SETTINGS">
                <font>
                   <Font size="65.0" />
@@ -96,7 +106,20 @@
                <font>
                   <Font size="35.0" />
                </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Button>
+            <Slider fx:id="soundBar" blockIncrement="1.0" layoutX="593.0" layoutY="245.0" prefHeight="125.0" prefWidth="552.0" stylesheets="@../css/loadingPage.css">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Slider>
+            <ImageView fitHeight="151.0" fitWidth="143.0" layoutX="416.0" layoutY="237.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/soundIcon.png" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
    </children>

@@ -22,6 +22,30 @@
     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 2, 0, 0, 1);
 }
 
+.button-help {
+    -fx-background-color: linear-gradient(to bottom, #c74444 0%, #bf2a2a 100%);
+    -fx-font-size: 60px;
+    -fx-background-radius: 15px;
+    -fx-border-color: #fa0303;
+    -fx-border-radius: 15px;
+    -fx-border-width: 1px;
+    -fx-font-family: "futura";
+    -fx-padding: 0px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 3, 0, 0, 1);
+}
+
+.button-help:hover {
+    -fx-font-size:70px;
+    -fx-background-color: linear-gradient(to bottom, #bf2a2a 0%, #c74444 100%);
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 5, 0, 0, 2);
+}
+
+.button-help:pressed {
+    -fx-translate-y: 1px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 2, 0, 0, 1);
+}
+
 .button-exit {
     -fx-background-color: linear-gradient(to bottom, #c74444 0%, #bf2a2a 100%);
     -fx-font-size: 35px;
@@ -66,4 +90,21 @@
     -fx-font-family: "futura";
     -fx-font-weight: bold;  
     -fx-font-size: 65px;
+}
+
+.slider .track {
+    -fx-pref-height: 12px;
+    -fx-background-color:
+        linear-gradient(to bottom, #000000, #000000),
+        rgb(255, 255, 255);
+}
+
+.slider .thumb {
+    -fx-background-color:
+        linear-gradient(to bottom, #000000, #000000),
+        rgb(255, 255, 255);
+    -fx-background-insets: 0, 6;
+    -fx-background-radius: 50%, 50%;
+    -fx-padding: 14;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 5, 0, 0, 1);
 }
