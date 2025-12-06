@@ -34,6 +34,6 @@ Unix/MacOsX:
 `./mvnw clean javafx:run`
 
 Windows:  
-`mvnw.cmd clean javafx:run`
+`.\mvnw.cmd clean javafx:run`
 
 

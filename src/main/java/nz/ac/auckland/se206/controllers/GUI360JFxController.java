@@ -21,7 +21,6 @@ import javafx.scene.paint.Color;
 import javafx.scene.transform.Rotate;
 import javax.imageio.ImageIO;
 import nz.ac.auckland.se206.App;
-import nz.ac.auckland.se206.Util.EquirectangularToCubic;
 import org.fxyz3d.scene.Skybox;
 
 public class GUI360JFxController {
@@ -162,8 +161,8 @@ public class GUI360JFxController {
     Random random = new Random();
 
     for (int i = 0; i < randomNumbers.length; i++) {
-      // Random number between 1-4
-      randomNumbers[i] = random.nextInt(4) + 1;
+      // Random number between 1-5
+      randomNumbers[i] = random.nextInt(5) + 1;
     }
 
     // Set up a task to load other panoramas
