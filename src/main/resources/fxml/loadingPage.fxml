@@ -76,10 +76,27 @@
             </ImageView>
          </graphic>
       </Button>
-      <Pane fx:id="settingsPane" layoutX="-1.0" prefHeight="801.0" prefWidth="1539.0" visible="false">
+      <Pane fx:id="settingsPane" layoutX="-1.0" prefHeight="801.0" prefWidth="1539.0">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#069406" height="820.0" layoutX="-8.0" layoutY="-9.0" opacity="0.4" stroke="BLACK" strokeType="INSIDE" width="1560.0" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#40ffb4" height="651.0" layoutX="377.0" layoutY="78.0" stroke="#00ffa0" strokeType="INSIDE" style="-fx-arc-height: 50; -fx-arc-width: 50; -fx-fill: linear-gradient(to bottom, #44c767 0%, #5cbf2a 100%);" width="800.0" />
+            <Label alignment="CENTER" layoutX="376.0" layoutY="76.0" prefHeight="149.0" prefWidth="801.0" styleClass="label-settings" stylesheets="@../css/loadingPage.css" text="  SETTINGS">
+               <font>
+                  <Font size="65.0" />
+               </font>
+               <graphic>
+                  <ImageView disable="true" fitHeight="84.0" fitWidth="76.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/settings.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Label>
+            <Button layoutX="1108.0" layoutY="45.0" mnemonicParsing="false" onAction="#onExitSettings" prefHeight="100.0" prefWidth="100.0" styleClass="button-exit" stylesheets="@../css/loadingPage.css" text="❌">
+               <font>
+                  <Font size="35.0" />
+               </font>
+            </Button>
          </children>
       </Pane>
    </children>

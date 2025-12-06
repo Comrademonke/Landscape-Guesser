@@ -22,6 +22,30 @@
     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 2, 0, 0, 1);
 }
 
+.button-exit {
+    -fx-background-color: linear-gradient(to bottom, #c74444 0%, #bf2a2a 100%);
+    -fx-font-size: 35px;
+    -fx-background-radius: 50%;
+    -fx-border-color: #fa0303;
+    -fx-border-radius: 50%;
+    -fx-border-width: 1px;
+    -fx-font-family: "futura";
+    -fx-padding: 0px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 3, 0, 0, 1);
+}
+
+.button-exit:hover {
+    -fx-font-size:45px;
+    -fx-background-color: linear-gradient(to bottom, #bf2a2a 0%, #c74444 100%);
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 5, 0, 0, 2);
+}
+
+.button-exit:pressed {
+    -fx-translate-y: 1px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 2, 0, 0, 1);
+}
+
 .progress-bar .bar {
     -fx-background-color: linear-gradient(to right, #44c767, #5cbf2a); /* Gradient for the progress */
     -fx-background-insets: 0;
@@ -35,6 +59,11 @@
 
 .label {
     -fx-font-family: "futura";
-    -fx-font-weight: bold;
-    
+    -fx-font-weight: bold;  
+}
+
+.label-settings {
+    -fx-font-family: "futura";
+    -fx-font-weight: bold;  
+    -fx-font-size: 65px;
 }

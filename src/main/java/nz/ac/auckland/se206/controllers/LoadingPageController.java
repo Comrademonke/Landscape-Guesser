@@ -132,4 +132,11 @@ public class LoadingPageController {
     settingsPane.setDisable(!isSettingsOpen);
     settingsPane.setVisible(isSettingsOpen);
   }
+
+    @FXML
+  private void onExitSettings(ActionEvent event){
+    isSettingsOpen = false;
+    settingsPane.setDisable(!isSettingsOpen);
+    settingsPane.setVisible(isSettingsOpen);
+  }
 }
