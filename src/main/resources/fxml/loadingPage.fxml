@@ -11,7 +11,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<Pane prefHeight="800.0" prefWidth="1537.0" style="-fx-background-color: #252929;" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.LoadingPageController">
+<Pane prefHeight="800.0" prefWidth="1537.0" style="-fx-background-color: #252929;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.LoadingPageController">
    <children>
       <ImageView fitHeight="888.0" fitWidth="1538.0" opacity="0.4" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -85,7 +85,7 @@
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#069406" height="820.0" layoutX="-8.0" layoutY="-9.0" opacity="0.4" stroke="BLACK" strokeType="INSIDE" width="1560.0" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#40ffb4" height="651.0" layoutX="386.0" layoutY="75.0" stroke="#00ffa0" strokeType="INSIDE" style="-fx-arc-height: 50; -fx-arc-width: 50; -fx-fill: linear-gradient(to bottom, #44c767 0%, #5cbf2a 100%);" width="800.0" />
-            <Button layoutX="486.0" layoutY="458.0" mnemonicParsing="false" prefHeight="155.0" prefWidth="612.0" styleClass="button-help" stylesheets="@../css/loadingPage.css" text="How To Play">
+            <Button layoutX="486.0" layoutY="458.0" mnemonicParsing="false" onAction="#onOpenTutorial" prefHeight="155.0" prefWidth="612.0" styleClass="button-help" stylesheets="@../css/loadingPage.css" text="How To Play">
                <font>
                   <Font size="34.0" />
                </font>
@@ -122,10 +122,10 @@
             </ImageView>
          </children>
       </Pane>
-      <Pane fx:id="TutorialPane" prefHeight="801.0" prefWidth="1539.0">
+      <Pane fx:id="tutorialPane" prefHeight="801.0" prefWidth="1539.0">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#40ffb4" height="694.0" layoutX="108.0" layoutY="40.0" stroke="#00ffa0" strokeType="INSIDE" style="-fx-arc-height: 50; -fx-arc-width: 50; -fx-fill: linear-gradient(to bottom, #44c767 0%, #5cbf2a 100%);" width="1326.0" />
-            <Label alignment="CENTER" layoutX="112.0" layoutY="50.0" prefHeight="135.0" prefWidth="1319.0" text="Press q to toggle scoreboard">
+            <Label alignment="CENTER" layoutX="112.0" layoutY="50.0" prefHeight="135.0" prefWidth="1319.0" stylesheets="@../css/loadingPage.css" text="Press q to toggle scoreboard">
                <font>
                   <Font size="75.0" />
                </font>
@@ -135,6 +135,8 @@
                   <Image url="@../images/scoreboardTutorial.gif" />
                </image>
             </ImageView>
+            <Button fx:id="goLeftButton" layoutX="140.0" layoutY="275.0" mnemonicParsing="false" onAction="#onGoPrevious" prefHeight="230.0" prefWidth="98.0" styleClass="button-help" stylesheets="@../css/loadingPage.css" text="⮜" />
+            <Button fx:id="goRightButton" layoutX="1316.0" layoutY="275.0" mnemonicParsing="false" onAction="#onGoNext" prefHeight="230.0" prefWidth="98.0" styleClass="button-help" stylesheets="@../css/loadingPage.css" text="⮞" />
          </children>
       </Pane>
    </children>

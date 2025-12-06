@@ -34,10 +34,15 @@ public class LoadingPageController {
   @FXML private ImageView foxAnimal;
   @FXML private Pane settingsPane;
   @FXML private Slider soundBar;
+  @FXML private Pane tutorialPane;
+  @FXML private Button goLeftButton;
+  @FXML private Button goRightButton;
 
   private MediaPlayer mediaPlayer;
   private DoubleProperty progressProperty = new SimpleDoubleProperty(0);
   private boolean isSettingsOpen = false;
+  private boolean isTutorialOpen = false;
+  private int tutorialPage = 0;
 
   @FXML
   private void initialize() {
@@ -48,8 +53,14 @@ public class LoadingPageController {
     foxAnimal.setVisible(false);
 
     isSettingsOpen = false;
-    settingsPane.setDisable(!isSettingsOpen);
-    settingsPane.setVisible(isSettingsOpen);
+    tutorialPane.setDisable(!isSettingsOpen);
+    tutorialPane.setVisible(isSettingsOpen);
+
+    isTutorialOpen = false;
+    settingsPane.setDisable(!isTutorialOpen);
+    settingsPane.setVisible(isTutorialOpen);
+
+    tutorialPageUpdate();
 
     soundBar.setValue(30.0);
 
@@ -147,5 +158,42 @@ public class LoadingPageController {
     isSettingsOpen = false;
     settingsPane.setDisable(!isSettingsOpen);
     settingsPane.setVisible(isSettingsOpen);
+  }
+
+  @FXML
+  private void onOpenTutorial(ActionEvent event) {
+    isTutorialOpen = true;
+    tutorialPane.setDisable(!isTutorialOpen);
+    tutorialPane.setVisible(isTutorialOpen);
+  }
+
+  private void onExitTutorial() {
+    isTutorialOpen = false;
+    tutorialPane.setDisable(!isTutorialOpen);
+    tutorialPane.setVisible(isTutorialOpen);
+  }
+
+  @FXML
+  private void onGoPrevious() {
+    tutorialPageUpdate();
+    tutorialPage--;
+  }
+
+  @FXML
+  private void onGoNext() {
+    tutorialPageUpdate();
+    tutorialPage++;
+  }
+
+  private void tutorialPageUpdate() {
+    // Update settings
+    if (tutorialPage == 0) {
+
+    } else if (tutorialPage == 1) {
+
+    } else {
+      onExitTutorial();
+    }
+    return;
   }
 }
