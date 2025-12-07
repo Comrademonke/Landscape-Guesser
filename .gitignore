@@ -710,7 +710,8 @@ FodyWeavers.xsd
 ### VisualStudio Patch ###
 # Additional files built by Visual Studio
 
-#Game settings folder
-gameSettings/
+# Game settings folder
+gameSettings/*
+!gameSettings/.gitkeep
 
 # End of https://www.toptal.com/developers/gitignore/api/git,java,maven,linux,macos,eclipse,windows,netbeans,intellij+all,visualstudio,visualstudiocode
