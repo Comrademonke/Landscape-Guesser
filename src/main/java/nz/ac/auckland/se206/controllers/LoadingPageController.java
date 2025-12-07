@@ -206,7 +206,7 @@ public class LoadingPageController {
       goLeftButton.setDisable(false);
       goLeftButton.setVisible(true);
 
-      tutorialLabel.setText("Available in Guessing stage");
+      tutorialLabel.setText("Also available in Guessing stage");
       tutorialView.setImage(togglingGif);
 
     } else if (tutorialPage == 2) {
