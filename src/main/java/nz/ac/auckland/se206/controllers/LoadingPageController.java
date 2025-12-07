@@ -1,5 +1,12 @@
 package nz.ac.auckland.se206.controllers;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Writer;
 import javafx.animation.RotateTransition;
 import javafx.animation.TranslateTransition;
 import javafx.beans.property.DoubleProperty;
@@ -69,14 +76,14 @@ public class LoadingPageController {
     settingsPane.setVisible(isTutorialOpen);
 
     tutorialPageUpdate();
-
-    soundBar.setValue(30.0);
+    soundBar.setValue((int) (getGameSoundSettings() * 100));
 
     soundBar
         .valueProperty()
         .addListener(
             (observableValue, number, newValue) -> {
               mediaPlayer.setVolume(newValue.doubleValue() / 100);
+              updateGameSoundSettings(newValue.doubleValue() / 100);
             });
 
     playMusic();
@@ -133,9 +140,46 @@ public class LoadingPageController {
     mediaPlayer = new MediaPlayer(media);
 
     mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
-    mediaPlayer.setVolume(0.3);
+
+    mediaPlayer.setVolume(getGameSoundSettings());
 
     mediaPlayer.play();
+  }
+
+  private double getGameSoundSettings() {
+    // Read sound.txt and updates game volume
+    InputStream soundSettings = getClass().getResourceAsStream("/gameSettings/sound.txt");
+    try {
+      BufferedReader reader = new BufferedReader(new InputStreamReader(soundSettings));
+
+      String line = reader.readLine();
+      reader.close();
+
+      return Double.parseDouble(line);
+
+    } catch (FileNotFoundException e) {
+      System.out.println("File not found");
+    } catch (IOException e) {
+      System.out.println("Something went wrong");
+    }
+
+    // Returns default game volume
+    return 0.3;
+  }
+
+  private void updateGameSoundSettings(double volume) {
+    InputStream soundSettings = getClass().getResourceAsStream("/gameSettings/sound.txt");
+
+    // Save the sound settings for next boot up
+    try (BufferedReader reader = new BufferedReader(new InputStreamReader(soundSettings));
+        Writer writer = new FileWriter("src/main/resources/gameSettings/sound.txt")) {
+      String firstLine = reader.readLine();
+      firstLine = String.valueOf(volume);
+      writer.write(firstLine);
+      reader.transferTo(writer);
+    } catch (Exception e) {
+      System.out.println("Problem reading file.");
+    }
   }
 
   public DoubleProperty progressProperty() {
