@@ -36,4 +36,10 @@ Unix/MacOsX:
 Windows:  
 `.\mvnw.cmd clean javafx:run`
 
+OR
+
+Click the 'run game' button at the bottom of your status bar
+
+![alt text](image.png)
+
 
