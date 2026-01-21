@@ -19,6 +19,7 @@ import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.CustomMapLayer;
+import nz.ac.auckland.se206.api.reverseGeocoder;
 
 public class GuessingRoomController {
 
@@ -52,6 +53,7 @@ public class GuessingRoomController {
   private HashMap<Integer, double[]> latitudeLongitudeCoordinates4 = new HashMap<>();
   private double dragZoomX;
   private double dragZoomY;
+  private reverseGeocoder reverseGeocoder;
 
   @FXML
   public void initialize() {
@@ -62,6 +64,8 @@ public class GuessingRoomController {
     initializeLatitudeLongitudeCoordinates2();
     initializeLatitudeLongitudeCoordinates3();
     initializeLatitudeLongitudeCoordinates4();
+
+    reverseGeocoder = new reverseGeocoder();
 
     scoreBoard.setLayoutX(2000);
 
@@ -174,6 +178,7 @@ public class GuessingRoomController {
 
             customMapLayer.updateGuessMarker(clickedPoint);
             customMapLayer.updateGuessMarkerVisibility(true);
+            updateGuessingLocationText();
           }
         });
 
@@ -194,6 +199,28 @@ public class GuessingRoomController {
           mapView.setCenter(new MapPoint(newLatitude, newLongitude));
           updateFillerMap(newLatitude, newLongitude);
         });
+  }
+
+  private void updateGuessingLocationText() {
+    MapPoint currentGuessingPoint = customMapLayer.returnGuessMarker();
+
+    reverseGeocoder.setLatitudeLongitude(
+        currentGuessingPoint.getLatitude(), currentGuessingPoint.getLongitude());
+
+    try {
+      reverseGeocoder.getLatitudeLongitudeInformation();
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+
+    String currentGuessText =
+        "Your current guess is in: "
+            + reverseGeocoder.returnCityName()
+            + ", "
+            + reverseGeocoder.returnCountryName();
+
+    distanceLabel.setVisible(true);
+    distanceLabel.setText(currentGuessText);
   }
 
   private void updateFillerMap(double latitude, double longitude) {
@@ -291,9 +318,33 @@ public class GuessingRoomController {
 
     updateScore(distanceMeters);
 
+    String targetLocation = updateFinalGuessingLocationText();
+
     // Display the distance
     distanceLabel.setVisible(true);
-    distanceLabel.setText("Your guess was " + formattedDistance + " meters away.");
+    distanceLabel.setText(
+        "Your guess was " + formattedDistance + " meters away.\n" + targetLocation);
+  }
+
+  private String updateFinalGuessingLocationText() {
+    MapPoint targetGuessingPoint = customMapLayer.returnTargetMarker();
+
+    reverseGeocoder.setLatitudeLongitude(
+        targetGuessingPoint.getLatitude(), targetGuessingPoint.getLongitude());
+
+    try {
+      reverseGeocoder.getLatitudeLongitudeInformation();
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+
+    String currentGuessText =
+        "The location was : "
+            + reverseGeocoder.returnCityName()
+            + ", "
+            + reverseGeocoder.returnCountryName();
+
+    return currentGuessText;
   }
 
   private double calculateHaversineDistance(
