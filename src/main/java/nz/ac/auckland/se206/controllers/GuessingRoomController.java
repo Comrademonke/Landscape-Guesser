@@ -11,6 +11,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Slider;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
@@ -30,6 +31,7 @@ public class GuessingRoomController {
   @FXML private Label distanceLabel;
   @FXML private StackPane scoreBoard;
   @FXML private Label scoreLabel;
+  @FXML private Slider zoomSlider;
 
   private boolean isScoreBoardVisible = false;
   private double totalScore = 0.0;
@@ -57,6 +59,16 @@ public class GuessingRoomController {
     initializeLatitudeLongitudeCoordinates4();
 
     scoreBoard.setLayoutX(2000);
+
+    zoomSlider
+        .valueProperty()
+        .addListener(
+            (observable, oldValue, newValue) -> {
+              currentZoom = newValue.doubleValue();
+
+              mapView.setZoom(currentZoom);
+              mapViewFiller.setZoom(currentZoom);
+            });
   }
 
   private void setupMarkers() {
@@ -102,6 +114,8 @@ public class GuessingRoomController {
           } else if (currentZoom > 18) {
             currentZoom = 18.0;
           }
+
+          zoomSlider.setValue(currentZoom);
 
           // Apply zoom to both maps
           mapView.setZoom(currentZoom);
