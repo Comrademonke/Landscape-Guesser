@@ -58,3 +58,20 @@
     -fx-font-family: "futura";
     -fx-font-weight: bold;  
 }
+
+.slider .track {
+    -fx-pref-height: 12px;
+    -fx-background-color:
+        linear-gradient(to bottom, #5cbf2a, #44c767),
+        rgb(61, 184, 50);
+}
+
+.slider .thumb {
+    -fx-background-color:
+        linear-gradient(to bottom, #000000, #53f383),
+        rgb(255, 255, 255);
+    -fx-background-insets: 0, 6;
+    -fx-background-radius: 50%, 50%;
+    -fx-padding: 14;
+    -fx-effect: dropshadow(gaussian, rgba(0, 4, 255, 0.3), 5, 0, 0, 1);
+}

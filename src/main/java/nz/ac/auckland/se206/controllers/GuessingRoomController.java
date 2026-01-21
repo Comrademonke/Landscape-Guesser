@@ -32,6 +32,9 @@ public class GuessingRoomController {
   @FXML private StackPane scoreBoard;
   @FXML private Label scoreLabel;
   @FXML private Slider zoomSlider;
+  @FXML private Label zoomPercentage;
+  @FXML private Pane zoomPaneMenu;
+  @FXML private Button dragButton;
 
   private boolean isScoreBoardVisible = false;
   private double totalScore = 0.0;
@@ -47,6 +50,8 @@ public class GuessingRoomController {
   private HashMap<Integer, double[]> latitudeLongitudeCoordinates2 = new HashMap<>();
   private HashMap<Integer, double[]> latitudeLongitudeCoordinates3 = new HashMap<>();
   private HashMap<Integer, double[]> latitudeLongitudeCoordinates4 = new HashMap<>();
+  private double dragZoomX;
+  private double dragZoomY;
 
   @FXML
   public void initialize() {
@@ -68,7 +73,38 @@ public class GuessingRoomController {
 
               mapView.setZoom(currentZoom);
               mapViewFiller.setZoom(currentZoom);
+
+              double minZoom = 3.0;
+              double maxZoom = 18.0;
+
+              int percentage = (int) (((currentZoom - minZoom) / (maxZoom - minZoom)) * 100);
+              zoomPercentage.setText(percentage + "%");
             });
+
+    dragButton.setOnMousePressed(
+        event -> {
+          dragZoomX = event.getSceneX() - zoomPaneMenu.getLayoutX();
+          dragZoomY = event.getSceneY() - zoomPaneMenu.getLayoutY();
+        });
+
+    dragButton.setOnMouseDragged(
+        event -> {
+          double newX = event.getSceneX() - dragZoomX;
+          double newY = event.getSceneY() - dragZoomY;
+
+          zoomPaneMenu.setLayoutX(newX);
+          zoomPaneMenu.setLayoutY(newY);
+        });
+  }
+
+  @FXML
+  private void onZoomIn() {
+    zoomSlider.setValue(zoomSlider.getValue() * 1.05);
+  }
+
+  @FXML
+  private void onZoomOut() {
+    zoomSlider.setValue(zoomSlider.getValue() / 1.05);
   }
 
   private void setupMarkers() {
