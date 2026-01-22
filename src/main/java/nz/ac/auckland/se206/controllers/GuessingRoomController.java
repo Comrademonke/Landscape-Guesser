@@ -391,6 +391,10 @@ public class GuessingRoomController {
     customMapLayer.updateTargetMarker(new MapPoint(latitude, longitude));
   }
 
+  public HashMap<Integer, double[]> returnLatitudeLongitude() {
+    return TargetLatitudeLongitudeCoordinates;
+  }
+
   public void initializeLatitudeLongitudeCoordinates() {
     // Each coordinate for each level
 

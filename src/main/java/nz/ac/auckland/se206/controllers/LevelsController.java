@@ -1,5 +1,8 @@
 package nz.ac.auckland.se206.controllers;
 
+import com.gluonhq.maps.MapPoint;
+import com.gluonhq.maps.MapView;
+import java.util.HashMap;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
@@ -16,6 +19,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
 import nz.ac.auckland.se206.App;
+import nz.ac.auckland.se206.CustomMapDisplay;
 
 public class LevelsController {
 
@@ -47,16 +51,23 @@ public class LevelsController {
 
   @FXML private ImageView levelPreview;
   @FXML private Pane levelPreviewPane;
+  @FXML private Pane mapAnswerPane;
+  @FXML private MapView mapAnswer;
 
   private boolean isScoreBoardVisible = false;
 
   private GUI360JFxController GUI360Controller;
   private GuessingRoomController guessingRoomController;
   private int[] randomNumbers;
+  private CustomMapDisplay customMapDisplay;
+  private HashMap<Integer, double[]> targetLatitudeLongitudeCoordinates;
 
   @FXML
   private void initialize() {
     scoreBoard.setLayoutX(2000);
+
+    customMapDisplay = new CustomMapDisplay();
+    mapAnswer.addLayer(customMapDisplay);
   }
 
   public void setGUI360Controller(GUI360JFxController GUI360Controller) {
@@ -162,6 +173,8 @@ public class LevelsController {
     GUI360Controller.panoramaPicker(level);
     guessingRoomController.setLatitudeLongitude(numberLevel);
 
+    getLatitudeLongitudeTargetInformation();
+
     App app = App.getInstance();
     if (app != null) {
       app.switchToViewerScene();
@@ -172,6 +185,10 @@ public class LevelsController {
     randomNumbers = GUI360Controller.getRandomArray();
   }
 
+  public void getLatitudeLongitudeTargetInformation() {
+    targetLatitudeLongitudeCoordinates = guessingRoomController.returnLatitudeLongitude();
+  }
+
   public void moveAnimals(ImageView image, int yPosition) {
     getRandomArray();
     TranslateTransition transition = new TranslateTransition();
@@ -180,6 +197,19 @@ public class LevelsController {
     transition.setDuration(Duration.seconds(0.5));
 
     transition.play();
+  }
+
+  public void setLatitudeLongitude(int value) {
+    if (customMapDisplay == null || targetLatitudeLongitudeCoordinates == null) {
+      return;
+    }
+
+    double[] coordinates = targetLatitudeLongitudeCoordinates.get(value);
+
+    double latitude = coordinates[0];
+    double longitude = coordinates[1];
+
+    customMapDisplay.updateTargetMarker(new MapPoint(latitude, longitude));
   }
 
   @FXML
@@ -196,6 +226,8 @@ public class LevelsController {
     levelPreview.setImage(image);
     levelPreviewPane.setLayoutX(330);
     levelPreviewPane.setLayoutY(170);
+
+    setLatitudeLongitude(1);
   }
 
   @FXML
@@ -219,6 +251,8 @@ public class LevelsController {
     levelPreview.setImage(image);
     levelPreviewPane.setLayoutX(600);
     levelPreviewPane.setLayoutY(170);
+
+    setLatitudeLongitude(2);
   }
 
   @FXML
@@ -242,6 +276,8 @@ public class LevelsController {
     levelPreview.setImage(image);
     levelPreviewPane.setLayoutX(330);
     levelPreviewPane.setLayoutY(170);
+
+    setLatitudeLongitude(3);
   }
 
   @FXML
@@ -265,6 +301,8 @@ public class LevelsController {
     levelPreview.setImage(image);
     levelPreviewPane.setLayoutX(600);
     levelPreviewPane.setLayoutY(170);
+
+    setLatitudeLongitude(4);
   }
 
   @FXML
@@ -288,6 +326,8 @@ public class LevelsController {
     levelPreview.setImage(image);
     levelPreviewPane.setLayoutX(880);
     levelPreviewPane.setLayoutY(170);
+
+    setLatitudeLongitude(5);
   }
 
   @FXML
@@ -311,6 +351,8 @@ public class LevelsController {
     levelPreview.setImage(image);
     levelPreviewPane.setLayoutX(330);
     levelPreviewPane.setLayoutY(430);
+
+    setLatitudeLongitude(6);
   }
 
   @FXML
@@ -334,6 +376,8 @@ public class LevelsController {
     levelPreview.setImage(image);
     levelPreviewPane.setLayoutX(600);
     levelPreviewPane.setLayoutY(430);
+
+    setLatitudeLongitude(7);
   }
 
   @FXML
@@ -357,6 +401,8 @@ public class LevelsController {
     levelPreview.setImage(image);
     levelPreviewPane.setLayoutX(330);
     levelPreviewPane.setLayoutY(430);
+
+    setLatitudeLongitude(8);
   }
 
   @FXML
@@ -380,6 +426,8 @@ public class LevelsController {
     levelPreview.setImage(image);
     levelPreviewPane.setLayoutX(600);
     levelPreviewPane.setLayoutY(430);
+
+    setLatitudeLongitude(9);
   }
 
   @FXML
@@ -403,6 +451,8 @@ public class LevelsController {
     levelPreview.setImage(image);
     levelPreviewPane.setLayoutX(880);
     levelPreviewPane.setLayoutY(430);
+
+    setLatitudeLongitude(10);
   }
 
   @FXML
