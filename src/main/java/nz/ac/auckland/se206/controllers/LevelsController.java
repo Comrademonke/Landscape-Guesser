@@ -47,6 +47,7 @@ public class LevelsController {
 
   private GUI360JFxController GUI360Controller;
   private GuessingRoomController guessingRoomController;
+  private int[] randomArray;
 
   @FXML
   private void initialize() {
@@ -160,6 +161,10 @@ public class LevelsController {
     if (app != null) {
       app.switchToViewerScene();
     }
+  }
+
+  public void getRandomArray() {
+    randomArray = GUI360Controller.getRandomArray();
   }
 
   public void moveAnimals(ImageView image, int yPosition) {
