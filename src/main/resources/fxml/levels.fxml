@@ -160,7 +160,7 @@
             </Label>
          </children>
       </StackPane>
-      <Pane layoutX="320.0" layoutY="160.0" prefHeight="369.0" prefWidth="328.0" styleClass="pane" stylesheets="@../css/levels.css">
+      <Pane fx:id="levelPreviewPane" layoutX="320.0" layoutY="160.0" prefHeight="369.0" prefWidth="328.0" styleClass="pane" stylesheets="@../css/levels.css" visible="false">
          <children>
             <Label alignment="CENTER" layoutX="20.0" layoutY="10.0" prefHeight="53.0" prefWidth="299.0" style="-fx-background-color: transparent; -fx-padding: 0;" text="Level Preview: ">
                <font>

@@ -8,9 +8,11 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
 import nz.ac.auckland.se206.App;
@@ -43,11 +45,14 @@ public class LevelsController {
   @FXML private StackPane scoreBoard;
   @FXML private Label scoreLabel;
 
+  @FXML private ImageView levelPreview;
+  @FXML private Pane levelPreviewPane;
+
   private boolean isScoreBoardVisible = false;
 
   private GUI360JFxController GUI360Controller;
   private GuessingRoomController guessingRoomController;
-  private int[] randomArray;
+  private int[] randomNumbers;
 
   @FXML
   private void initialize() {
@@ -164,10 +169,11 @@ public class LevelsController {
   }
 
   public void getRandomArray() {
-    randomArray = GUI360Controller.getRandomArray();
+    randomNumbers = GUI360Controller.getRandomArray();
   }
 
   public void moveAnimals(ImageView image, int yPosition) {
+    getRandomArray();
     TranslateTransition transition = new TranslateTransition();
     transition.setNode(image);
     transition.setToY(yPosition);
@@ -179,101 +185,211 @@ public class LevelsController {
   @FXML
   private void moveRabbitUp() {
     moveAnimals(rabbitImage, -85);
+
+    levelPreviewPane.setVisible(true);
+
+    Image image =
+        new Image(
+            getClass()
+                .getResourceAsStream(
+                    "/images/panoramasSet" + randomNumbers[0] + "/levelOnePanorama2.jpg"));
+    levelPreview.setImage(image);
   }
 
   @FXML
   private void moveRabbitDown() {
     moveAnimals(rabbitImage, 0);
+
+    levelPreviewPane.setVisible(false);
   }
 
   @FXML
   private void movePenguinUp() {
     moveAnimals(penguinImage, -85);
+
+    levelPreviewPane.setVisible(true);
+
+    Image image =
+        new Image(
+            getClass()
+                .getResourceAsStream(
+                    "/images/panoramasSet" + randomNumbers[1] + "/levelTwoPanorama2.jpg"));
+    levelPreview.setImage(image);
   }
 
   @FXML
   private void movePenguinDown() {
     moveAnimals(penguinImage, 0);
+
+    levelPreviewPane.setVisible(false);
   }
 
   @FXML
   private void moveDogUp() {
     moveAnimals(dogImage, -85);
+
+    levelPreviewPane.setVisible(true);
+
+    Image image =
+        new Image(
+            getClass()
+                .getResourceAsStream(
+                    "/images/panoramasSet" + randomNumbers[2] + "/levelThreePanorama2.jpg"));
+    levelPreview.setImage(image);
   }
 
   @FXML
   private void moveDogDown() {
     moveAnimals(dogImage, 0);
+
+    levelPreviewPane.setVisible(false);
   }
 
   @FXML
   private void movePigUp() {
     moveAnimals(pigImage, -85);
+
+    levelPreviewPane.setVisible(true);
+
+    Image image =
+        new Image(
+            getClass()
+                .getResourceAsStream(
+                    "/images/panoramasSet" + randomNumbers[3] + "/levelFourPanorama2.jpg"));
+    levelPreview.setImage(image);
   }
 
   @FXML
   private void movePigDown() {
     moveAnimals(pigImage, 0);
+
+    levelPreviewPane.setVisible(false);
   }
 
   @FXML
   private void moveCatUp() {
     moveAnimals(catImage, -85);
+
+    levelPreviewPane.setVisible(true);
+
+    Image image =
+        new Image(
+            getClass()
+                .getResourceAsStream(
+                    "/images/panoramasSet" + randomNumbers[4] + "/levelFivePanorama2.jpg"));
+    levelPreview.setImage(image);
   }
 
   @FXML
   private void moveCatDown() {
     moveAnimals(catImage, 0);
+
+    levelPreviewPane.setVisible(false);
   }
 
   @FXML
   private void moveFrogUp() {
     moveAnimals(frogImage, -85);
+
+    levelPreviewPane.setVisible(true);
+
+    Image image =
+        new Image(
+            getClass()
+                .getResourceAsStream(
+                    "/images/panoramasSet" + randomNumbers[5] + "/levelSixPanorama2.jpg"));
+    levelPreview.setImage(image);
   }
 
   @FXML
   private void moveFrogDown() {
     moveAnimals(frogImage, 0);
+
+    levelPreviewPane.setVisible(false);
   }
 
   @FXML
   private void moveTigerUp() {
     moveAnimals(tigerImage, -85);
+
+    levelPreviewPane.setVisible(true);
+
+    Image image =
+        new Image(
+            getClass()
+                .getResourceAsStream(
+                    "/images/panoramasSet" + randomNumbers[6] + "/levelSevenPanorama2.jpg"));
+    levelPreview.setImage(image);
   }
 
   @FXML
   private void moveTigerDown() {
     moveAnimals(tigerImage, 0);
+
+    levelPreviewPane.setVisible(false);
   }
 
   @FXML
   private void moveCowUp() {
     moveAnimals(cowImage, -85);
+
+    levelPreviewPane.setVisible(true);
+
+    Image image =
+        new Image(
+            getClass()
+                .getResourceAsStream(
+                    "/images/panoramasSet" + randomNumbers[7] + "/levelEightPanorama2.jpg"));
+    levelPreview.setImage(image);
   }
 
   @FXML
   private void moveCowDown() {
     moveAnimals(cowImage, 0);
+
+    levelPreviewPane.setVisible(false);
   }
 
   @FXML
   private void moveRatUp() {
     moveAnimals(ratImage, -85);
+
+    levelPreviewPane.setVisible(true);
+
+    Image image =
+        new Image(
+            getClass()
+                .getResourceAsStream(
+                    "/images/panoramasSet" + randomNumbers[8] + "/levelNinePanorama2.jpg"));
+    levelPreview.setImage(image);
   }
 
   @FXML
   private void moveRatDown() {
     moveAnimals(ratImage, 0);
+
+    levelPreviewPane.setVisible(false);
   }
 
   @FXML
   private void moveChickenUp() {
     moveAnimals(chickenImage, -85);
+
+    levelPreviewPane.setVisible(true);
+
+    Image image =
+        new Image(
+            getClass()
+                .getResourceAsStream(
+                    "/images/panoramasSet" + randomNumbers[9] + "/levelTenPanorama2.jpg"));
+    levelPreview.setImage(image);
   }
 
   @FXML
   private void moveChickenDown() {
     moveAnimals(chickenImage, 0);
+
+    levelPreviewPane.setVisible(false);
   }
 
   @FXML
