@@ -194,6 +194,8 @@ public class LevelsController {
                 .getResourceAsStream(
                     "/images/panoramasSet" + randomNumbers[0] + "/levelOnePanorama2.jpg"));
     levelPreview.setImage(image);
+    levelPreviewPane.setLayoutX(330);
+    levelPreviewPane.setLayoutY(170);
   }
 
   @FXML
@@ -215,6 +217,8 @@ public class LevelsController {
                 .getResourceAsStream(
                     "/images/panoramasSet" + randomNumbers[1] + "/levelTwoPanorama2.jpg"));
     levelPreview.setImage(image);
+    levelPreviewPane.setLayoutX(600);
+    levelPreviewPane.setLayoutY(170);
   }
 
   @FXML
@@ -236,6 +240,8 @@ public class LevelsController {
                 .getResourceAsStream(
                     "/images/panoramasSet" + randomNumbers[2] + "/levelThreePanorama2.jpg"));
     levelPreview.setImage(image);
+    levelPreviewPane.setLayoutX(330);
+    levelPreviewPane.setLayoutY(170);
   }
 
   @FXML
@@ -257,6 +263,8 @@ public class LevelsController {
                 .getResourceAsStream(
                     "/images/panoramasSet" + randomNumbers[3] + "/levelFourPanorama2.jpg"));
     levelPreview.setImage(image);
+    levelPreviewPane.setLayoutX(600);
+    levelPreviewPane.setLayoutY(170);
   }
 
   @FXML
@@ -278,6 +286,8 @@ public class LevelsController {
                 .getResourceAsStream(
                     "/images/panoramasSet" + randomNumbers[4] + "/levelFivePanorama2.jpg"));
     levelPreview.setImage(image);
+    levelPreviewPane.setLayoutX(880);
+    levelPreviewPane.setLayoutY(170);
   }
 
   @FXML
@@ -299,6 +309,8 @@ public class LevelsController {
                 .getResourceAsStream(
                     "/images/panoramasSet" + randomNumbers[5] + "/levelSixPanorama2.jpg"));
     levelPreview.setImage(image);
+    levelPreviewPane.setLayoutX(330);
+    levelPreviewPane.setLayoutY(430);
   }
 
   @FXML
@@ -320,6 +332,8 @@ public class LevelsController {
                 .getResourceAsStream(
                     "/images/panoramasSet" + randomNumbers[6] + "/levelSevenPanorama2.jpg"));
     levelPreview.setImage(image);
+    levelPreviewPane.setLayoutX(600);
+    levelPreviewPane.setLayoutY(430);
   }
 
   @FXML
@@ -341,6 +355,8 @@ public class LevelsController {
                 .getResourceAsStream(
                     "/images/panoramasSet" + randomNumbers[7] + "/levelEightPanorama2.jpg"));
     levelPreview.setImage(image);
+    levelPreviewPane.setLayoutX(330);
+    levelPreviewPane.setLayoutY(430);
   }
 
   @FXML
@@ -362,6 +378,8 @@ public class LevelsController {
                 .getResourceAsStream(
                     "/images/panoramasSet" + randomNumbers[8] + "/levelNinePanorama2.jpg"));
     levelPreview.setImage(image);
+    levelPreviewPane.setLayoutX(600);
+    levelPreviewPane.setLayoutY(430);
   }
 
   @FXML
@@ -383,6 +401,8 @@ public class LevelsController {
                 .getResourceAsStream(
                     "/images/panoramasSet" + randomNumbers[9] + "/levelTenPanorama2.jpg"));
     levelPreview.setImage(image);
+    levelPreviewPane.setLayoutX(880);
+    levelPreviewPane.setLayoutY(430);
   }
 
   @FXML
