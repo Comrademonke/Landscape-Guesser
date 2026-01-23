@@ -58,6 +58,14 @@ public class LoadingPageController {
       new Image(getClass().getResource("/images/panningTutorial.gif").toString());
   private Image togglingGif =
       new Image(getClass().getResource("/images/togglingTutorial.gif").toString());
+  private Image levelPreviewGif =
+      new Image(getClass().getResource("/images/levelPreviewTutorial.gif").toString());
+  private Image checkLocationGif =
+      new Image(getClass().getResource("/images/checkLocationTutorial.gif").toString());
+  private Image zoomInGif =
+      new Image(getClass().getResource("/images/zoomInTutorial.gif").toString());
+  private Image checkAnswerGif =
+      new Image(getClass().getResource("/images/checkAnswerTutorial.gif").toString());
 
   @FXML
   private void initialize() {
@@ -257,6 +265,26 @@ public class LoadingPageController {
 
       tutorialLabel.setText("Use mouse to pan and zoom");
       tutorialView.setImage(panningGif);
+
+    } else if (tutorialPage == 3) {
+
+      tutorialLabel.setText("Hover level to preview");
+      tutorialView.setImage(levelPreviewGif);
+
+    } else if (tutorialPage == 4) {
+
+      tutorialLabel.setText("Click to check and guess location");
+      tutorialView.setImage(checkLocationGif);
+
+    } else if (tutorialPage == 5) {
+
+      tutorialLabel.setText("Use zoom menu or scroll to zoom");
+      tutorialView.setImage(zoomInGif);
+
+    } else if (tutorialPage == 6) {
+
+      tutorialLabel.setText("Hover completed level to check answer");
+      tutorialView.setImage(checkAnswerGif);
 
     } else {
       tutorialPage--;
