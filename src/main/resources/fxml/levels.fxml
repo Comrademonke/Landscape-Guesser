@@ -33,7 +33,7 @@
             <Font size="50.0" />
          </font>
          <cursor>
-            <Cursor fx:constant="HAND" />
+            <Cursor fx:constant="DEFAULT" />
          </cursor></Button>
       <ImageView fx:id="penguinImage" fitHeight="117.0" fitWidth="130.0" layoutX="430.0" layoutY="313.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -151,6 +151,86 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
+      <Button fx:id="levelOneAnswerButton" disable="true" layoutX="147.8333" layoutY="301.0" mnemonicParsing="false" onMouseEntered="#showLevelOneAnswer" onMouseExited="#hideLevelOneAnswer" prefHeight="130.0" prefWidth="130.0" stylesheets="@../css/levels.css" text="✔" visible="false">
+         <font>
+            <Font size="50.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button fx:id="levelTwoAnswerButton" disable="true" layoutX="425.666" layoutY="301.0" mnemonicParsing="false" onMouseEntered="#showLevelTwoAnswer" onMouseExited="#hideLevelTwoAnswer" prefHeight="130.0" prefWidth="130.0" stylesheets="@../css/levels.css" text="✔" visible="false">
+         <font>
+            <Font size="50.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button fx:id="levelThreeAnswerButton" disable="true" layoutX="703.499" layoutY="301.0" mnemonicParsing="false" onMouseEntered="#showLevelThreeAnswer" onMouseExited="#hideLevelThreeAnswer" prefHeight="130.0" prefWidth="130.0" stylesheets="@../css/levels.css" text="✔" visible="false">
+         <font>
+            <Font size="50.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button fx:id="levelFourAnswerButton" disable="true" layoutX="981.332" layoutY="301.0" mnemonicParsing="false" onMouseEntered="#showLevelFourAnswer" onMouseExited="#hideLevelFourAnswer" prefHeight="130.0" prefWidth="130.0" stylesheets="@../css/levels.css" text="✔" visible="false">
+         <font>
+            <Font size="50.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button fx:id="levelFiveAnswerButton" disable="true" layoutX="1259.165" layoutY="301.0" mnemonicParsing="false" onMouseEntered="#showLevelFiveAnswer" onMouseExited="#hideLevelFiveAnswer" prefHeight="130.0" prefWidth="130.0" stylesheets="@../css/levels.css" text="✔" visible="false">
+         <font>
+            <Font size="50.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button fx:id="levelSixAnswerButton" disable="true" layoutX="147.8333" layoutY="560.0" mnemonicParsing="false" onMouseEntered="#showLevelSixAnswer" onMouseExited="#hideLevelSixAnswer" prefHeight="130.0" prefWidth="130.0" stylesheets="@../css/levels.css" text="✔" visible="false">
+         <font>
+            <Font size="50.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button fx:id="levelSevenAnswerButton" disable="true" layoutX="425.666" layoutY="560.0" mnemonicParsing="false" onMouseEntered="#showLevelSevenAnswer" onMouseExited="#hideLevelSevenAnswer" prefHeight="130.0" prefWidth="130.0" stylesheets="@../css/levels.css" text="✔" visible="false">
+         <font>
+            <Font size="50.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button fx:id="levelEightAnswerButton" disable="true" layoutX="703.499" layoutY="560.0" mnemonicParsing="false" onMouseEntered="#showLevelEightAnswer" onMouseExited="#hideLevelEightAnswer" prefHeight="130.0" prefWidth="130.0" stylesheets="@../css/levels.css" text="✔" visible="false">
+         <font>
+            <Font size="50.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button fx:id="levelNineAnswerButton" disable="true" layoutX="981.332" layoutY="560.0" mnemonicParsing="false" onMouseEntered="#showLevelNineAnswer" onMouseExited="#hideLevelNineAnswer" prefHeight="130.0" prefWidth="130.0" stylesheets="@../css/levels.css" text="✔" visible="false">
+         <font>
+            <Font size="50.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button fx:id="levelTenAnswerButton" disable="true" layoutX="1259.165" layoutY="560.0" mnemonicParsing="false" onMouseEntered="#showLevelTenAnswer" onMouseExited="#hideLevelTenAnswer" prefHeight="130.0" prefWidth="130.0" stylesheets="@../css/levels.css" text="✔" visible="false">
+         <font>
+            <Font size="50.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
       <StackPane fx:id="scoreBoard" layoutX="1068.0" layoutY="171.0" prefHeight="150.0" prefWidth="200.0">
          <children>
             <Polygon fill="#00ff44" points="-234.0, 182.35330200195312, -314.0, 38.176513671875, 155.5999755859375, 38.17664337158203, 155.0, 182.35330200195312" stroke="#00ff44" strokeType="INSIDE" />
@@ -163,7 +243,7 @@
       </StackPane>
       <Pane fx:id="levelPreviewPane" layoutX="330.0" layoutY="170.0" prefHeight="369.0" prefWidth="328.0" styleClass="pane" stylesheets="@../css/levels.css" visible="false">
          <children>
-            <Label alignment="CENTER" layoutX="20.0" layoutY="10.0" prefHeight="53.0" prefWidth="299.0" style="-fx-background-color: transparent; -fx-padding: 0;" text="Level Preview: ">
+            <Label fx:id="levelInformationLabel" alignment="CENTER" layoutX="20.0" layoutY="10.0" prefHeight="53.0" prefWidth="299.0" style="-fx-background-color: transparent; -fx-padding: 0;" text="Level Preview: ">
                <font>
                   <Font size="34.0" />
                </font>
@@ -173,7 +253,7 @@
                   <Image url="@../images/panoramasSet1/levelThreePanorama1.jpg" />
                </image>
             </ImageView>
-            <Pane fx:id="mapAnswerPane" layoutX="23.0" layoutY="69.0" prefHeight="280.0" prefWidth="280.0">
+            <Pane fx:id="mapAnswerPane" layoutX="23.0" layoutY="69.0" prefHeight="280.0" prefWidth="280.0" visible="false">
                <children>
                   <MapView fx:id="mapAnswer" disable="true" layoutX="12.0" layoutY="12.0" scaleX="1.09375" scaleY="1.09375" />
                </children>
