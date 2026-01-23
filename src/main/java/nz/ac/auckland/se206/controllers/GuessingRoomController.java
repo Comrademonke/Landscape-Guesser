@@ -11,6 +11,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Slider;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
@@ -18,6 +19,7 @@ import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.CustomMapLayer;
+import nz.ac.auckland.se206.api.reverseGeocoder;
 
 public class GuessingRoomController {
 
@@ -30,6 +32,10 @@ public class GuessingRoomController {
   @FXML private Label distanceLabel;
   @FXML private StackPane scoreBoard;
   @FXML private Label scoreLabel;
+  @FXML private Slider zoomSlider;
+  @FXML private Label zoomPercentage;
+  @FXML private Pane zoomPaneMenu;
+  @FXML private Button dragButton;
 
   private boolean isScoreBoardVisible = false;
   private double totalScore = 0.0;
@@ -45,6 +51,9 @@ public class GuessingRoomController {
   private HashMap<Integer, double[]> latitudeLongitudeCoordinates2 = new HashMap<>();
   private HashMap<Integer, double[]> latitudeLongitudeCoordinates3 = new HashMap<>();
   private HashMap<Integer, double[]> latitudeLongitudeCoordinates4 = new HashMap<>();
+  private double dragZoomX;
+  private double dragZoomY;
+  private reverseGeocoder reverseGeocoder;
 
   @FXML
   public void initialize() {
@@ -56,7 +65,50 @@ public class GuessingRoomController {
     initializeLatitudeLongitudeCoordinates3();
     initializeLatitudeLongitudeCoordinates4();
 
+    reverseGeocoder = new reverseGeocoder();
+
     scoreBoard.setLayoutX(2000);
+
+    zoomSlider
+        .valueProperty()
+        .addListener(
+            (observable, oldValue, newValue) -> {
+              currentZoom = newValue.doubleValue();
+
+              mapView.setZoom(currentZoom);
+              mapViewFiller.setZoom(currentZoom);
+
+              double minZoom = 3.0;
+              double maxZoom = 18.0;
+
+              int percentage = (int) (((currentZoom - minZoom) / (maxZoom - minZoom)) * 100);
+              zoomPercentage.setText(percentage + "%");
+            });
+
+    dragButton.setOnMousePressed(
+        event -> {
+          dragZoomX = event.getSceneX() - zoomPaneMenu.getLayoutX();
+          dragZoomY = event.getSceneY() - zoomPaneMenu.getLayoutY();
+        });
+
+    dragButton.setOnMouseDragged(
+        event -> {
+          double newX = event.getSceneX() - dragZoomX;
+          double newY = event.getSceneY() - dragZoomY;
+
+          zoomPaneMenu.setLayoutX(newX);
+          zoomPaneMenu.setLayoutY(newY);
+        });
+  }
+
+  @FXML
+  private void onZoomIn() {
+    zoomSlider.setValue(zoomSlider.getValue() * 1.05);
+  }
+
+  @FXML
+  private void onZoomOut() {
+    zoomSlider.setValue(zoomSlider.getValue() / 1.05);
   }
 
   private void setupMarkers() {
@@ -103,6 +155,8 @@ public class GuessingRoomController {
             currentZoom = 18.0;
           }
 
+          zoomSlider.setValue(currentZoom);
+
           // Apply zoom to both maps
           mapView.setZoom(currentZoom);
           mapViewFiller.setZoom(currentZoom);
@@ -124,6 +178,7 @@ public class GuessingRoomController {
 
             customMapLayer.updateGuessMarker(clickedPoint);
             customMapLayer.updateGuessMarkerVisibility(true);
+            updateGuessingLocationText();
           }
         });
 
@@ -144,6 +199,28 @@ public class GuessingRoomController {
           mapView.setCenter(new MapPoint(newLatitude, newLongitude));
           updateFillerMap(newLatitude, newLongitude);
         });
+  }
+
+  private void updateGuessingLocationText() {
+    MapPoint currentGuessingPoint = customMapLayer.returnGuessMarker();
+
+    reverseGeocoder.setLatitudeLongitude(
+        currentGuessingPoint.getLatitude(), currentGuessingPoint.getLongitude());
+
+    try {
+      reverseGeocoder.getLatitudeLongitudeInformation();
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+
+    String currentGuessText =
+        "Your current guess is in: "
+            + reverseGeocoder.returnCityName()
+            + ", "
+            + reverseGeocoder.returnCountryName();
+
+    distanceLabel.setVisible(true);
+    distanceLabel.setText(currentGuessText);
   }
 
   private void updateFillerMap(double latitude, double longitude) {
@@ -241,9 +318,33 @@ public class GuessingRoomController {
 
     updateScore(distanceMeters);
 
+    String targetLocation = updateFinalGuessingLocationText();
+
     // Display the distance
     distanceLabel.setVisible(true);
-    distanceLabel.setText("Your guess was " + formattedDistance + " meters away.");
+    distanceLabel.setText(
+        "Your guess was " + formattedDistance + " meters away.\n" + targetLocation);
+  }
+
+  private String updateFinalGuessingLocationText() {
+    MapPoint targetGuessingPoint = customMapLayer.returnTargetMarker();
+
+    reverseGeocoder.setLatitudeLongitude(
+        targetGuessingPoint.getLatitude(), targetGuessingPoint.getLongitude());
+
+    try {
+      reverseGeocoder.getLatitudeLongitudeInformation();
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+
+    String currentGuessText =
+        "The location was : "
+            + reverseGeocoder.returnCityName()
+            + ", "
+            + reverseGeocoder.returnCountryName();
+
+    return currentGuessText;
   }
 
   private double calculateHaversineDistance(
@@ -288,6 +389,10 @@ public class GuessingRoomController {
     double longitude = coordinates[1];
 
     customMapLayer.updateTargetMarker(new MapPoint(latitude, longitude));
+  }
+
+  public HashMap<Integer, double[]> returnLatitudeLongitude() {
+    return TargetLatitudeLongitudeCoordinates;
   }
 
   public void initializeLatitudeLongitudeCoordinates() {

@@ -509,6 +509,10 @@ public class GUI360JFxController {
     }
   }
 
+  public int[] getRandomArray() {
+    return randomNumbers;
+  }
+
   public void setGuessingRoomController(GuessingRoomController guessingRoomController) {
     this.guessingRoomController = guessingRoomController;
   }
