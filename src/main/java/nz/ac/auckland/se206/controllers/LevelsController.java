@@ -104,15 +104,7 @@ public class LevelsController {
 
   @FXML
   private void showLevelOneAnswer() {
-    levelInformationLabel.setText("Level Answer: ");
-    mapAnswerPane.setVisible(true);
-
-    setLatitudeLongitude(1);
-
-    levelPreviewPane.setLayoutX(330);
-    levelPreviewPane.setLayoutY(170);
-
-    levelPreviewPane.setVisible(true);
+    showAnswerPane(1, 330, 170);
   }
 
   @FXML
@@ -134,15 +126,7 @@ public class LevelsController {
 
   @FXML
   private void showLevelTwoAnswer() {
-    levelInformationLabel.setText("Level Answer: ");
-    mapAnswerPane.setVisible(true);
-
-    setLatitudeLongitude(2);
-
-    levelPreviewPane.setLayoutX(600);
-    levelPreviewPane.setLayoutY(170);
-
-    levelPreviewPane.setVisible(true);
+    showAnswerPane(2, 600, 170);
   }
 
   @FXML
@@ -164,15 +148,7 @@ public class LevelsController {
 
   @FXML
   private void showLevelThreeAnswer() {
-    levelInformationLabel.setText("Level Answer: ");
-    mapAnswerPane.setVisible(true);
-
-    setLatitudeLongitude(3);
-
-    levelPreviewPane.setLayoutX(330);
-    levelPreviewPane.setLayoutY(170);
-
-    levelPreviewPane.setVisible(true);
+    showAnswerPane(3, 330, 170);
   }
 
   @FXML
@@ -194,14 +170,7 @@ public class LevelsController {
 
   @FXML
   private void showLevelFourAnswer() {
-    levelInformationLabel.setText("Level Answer: ");
-    mapAnswerPane.setVisible(true);
-
-    setLatitudeLongitude(4);
-    levelPreviewPane.setLayoutX(600);
-    levelPreviewPane.setLayoutY(170);
-
-    levelPreviewPane.setVisible(true);
+    showAnswerPane(4, 600, 170);
   }
 
   @FXML
@@ -223,14 +192,7 @@ public class LevelsController {
 
   @FXML
   private void showLevelFiveAnswer() {
-    levelInformationLabel.setText("Level Answer: ");
-    mapAnswerPane.setVisible(true);
-
-    setLatitudeLongitude(5);
-    levelPreviewPane.setLayoutX(880);
-    levelPreviewPane.setLayoutY(170);
-
-    levelPreviewPane.setVisible(true);
+    showAnswerPane(5, 880, 170);
   }
 
   @FXML
@@ -252,14 +214,7 @@ public class LevelsController {
 
   @FXML
   private void showLevelSixAnswer() {
-    levelInformationLabel.setText("Level Answer: ");
-    mapAnswerPane.setVisible(true);
-
-    setLatitudeLongitude(6);
-    levelPreviewPane.setLayoutX(330);
-    levelPreviewPane.setLayoutY(430);
-
-    levelPreviewPane.setVisible(true);
+    showAnswerPane(6, 330, 430);
   }
 
   @FXML
@@ -281,14 +236,7 @@ public class LevelsController {
 
   @FXML
   private void showLevelSevenAnswer() {
-    levelInformationLabel.setText("Level Answer: ");
-    mapAnswerPane.setVisible(true);
-
-    setLatitudeLongitude(7);
-    levelPreviewPane.setLayoutX(600);
-    levelPreviewPane.setLayoutY(430);
-
-    levelPreviewPane.setVisible(true);
+    showAnswerPane(7, 600, 430);
   }
 
   @FXML
@@ -310,14 +258,7 @@ public class LevelsController {
 
   @FXML
   private void showLevelEightAnswer() {
-    levelInformationLabel.setText("Level Answer: ");
-    mapAnswerPane.setVisible(true);
-
-    setLatitudeLongitude(8);
-    levelPreviewPane.setLayoutX(330);
-    levelPreviewPane.setLayoutY(430);
-
-    levelPreviewPane.setVisible(true);
+    showAnswerPane(8, 330, 430);
   }
 
   @FXML
@@ -339,14 +280,7 @@ public class LevelsController {
 
   @FXML
   private void showLevelNineAnswer() {
-    levelInformationLabel.setText("Level Answer: ");
-    mapAnswerPane.setVisible(true);
-
-    setLatitudeLongitude(9);
-    levelPreviewPane.setLayoutX(600);
-    levelPreviewPane.setLayoutY(430);
-
-    levelPreviewPane.setVisible(true);
+    showAnswerPane(9, 600, 430);
   }
 
   @FXML
@@ -368,14 +302,7 @@ public class LevelsController {
 
   @FXML
   private void showLevelTenAnswer() {
-    levelInformationLabel.setText("Level Answer: ");
-    mapAnswerPane.setVisible(true);
-
-    setLatitudeLongitude(10);
-    levelPreviewPane.setLayoutX(880);
-    levelPreviewPane.setLayoutY(430);
-
-    levelPreviewPane.setVisible(true);
+    showAnswerPane(10, 880, 430);
   }
 
   @FXML
@@ -400,6 +327,17 @@ public class LevelsController {
     levelInformationLabel.setText("Level Preview: ");
     mapAnswerPane.setVisible(false);
     levelPreviewPane.setVisible(false);
+  }
+
+  private void showAnswerPane(int levelNumber, int layoutX, int layoutY) {
+    levelInformationLabel.setText("Level Answer: ");
+    mapAnswerPane.setVisible(true);
+
+    setLatitudeLongitude(levelNumber);
+    levelPreviewPane.setLayoutX(layoutX);
+    levelPreviewPane.setLayoutY(layoutY);
+
+    levelPreviewPane.setVisible(true);
   }
 
   public void getRandomArray() {
