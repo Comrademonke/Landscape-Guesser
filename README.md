@@ -13,6 +13,8 @@ A New Zealand based geography game featuring 10 levels (more levels and location
   
 ![scoreboardTutorial](https://github.com/user-attachments/assets/34b47190-6756-4a9a-93e9-369eae72ea69)
 
+For more instructions visit the tutorial located in settings.
+
 **Scoring system**
 
 Each level is score based on your distance from the marker, the further you are the less points you earn. The maximum score **per level** is **5,000**, and the maximum total score across **all levels** is **50,000**.
@@ -27,8 +29,16 @@ Graph representation of the scoring system:
 - 4GB ram 
 - Stable internet connection for map rendering
 
+- Geoapify key (free)
+https://www.geoapify.com/
 
 # How to run the game
+
+<img width="149" height="46" alt="image" src="https://github.com/user-attachments/assets/70274aa9-e4d5-40a3-804c-565f2b2493aa" />
+
+Paste in your geoapify key into the geoapify.config replacing API_KEY_HERE
+
+THEN
 
 Unix/MacOsX:  
 `./mvnw clean javafx:run`
