@@ -182,6 +182,19 @@ public class GuessingRoomController {
           }
         });
 
+    mapViewFiller.setOnMouseReleased(
+        event -> {
+          MapPoint clickedPoint = mapViewFiller.getMapPosition(event.getX(), event.getY());
+
+          double wrappedLon = mapWrappingHorizontally(clickedPoint.getLongitude());
+
+          MapPoint realPoint = new MapPoint(clickedPoint.getLatitude(), wrappedLon);
+
+          customMapLayer.updateGuessMarker(realPoint);
+          customMapLayer.updateGuessMarkerVisibility(true);
+          updateGuessingLocationText();
+        });
+
     mapView.setOnMouseDragged(
         event -> {
           double deltaX = event.getX() - dragStartX;
@@ -201,11 +214,21 @@ public class GuessingRoomController {
         });
   }
 
+  private double wrapLongitude(double longitude) {
+    while (longitude > 180) {
+      longitude -= 360;
+    }
+    while (longitude < -180) {
+      longitude += 360;
+    }
+    return longitude;
+  }
+
   private void updateGuessingLocationText() {
     MapPoint currentGuessingPoint = customMapLayer.returnGuessMarker();
 
     reverseGeocoder.setLatitudeLongitude(
-        currentGuessingPoint.getLatitude(), currentGuessingPoint.getLongitude());
+        currentGuessingPoint.getLatitude(), wrapLongitude(currentGuessingPoint.getLongitude()));
 
     try {
       reverseGeocoder.getLatitudeLongitudeInformation();

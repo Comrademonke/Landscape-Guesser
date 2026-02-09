@@ -54,10 +54,17 @@
     -fx-border-radius: 5;
 }
 
-.label {
+.label-info{
     -fx-font-family: "futura";
     -fx-font-weight: bold;  
 }
+
+.label {
+    -fx-font-family: "futura";
+    -fx-font-weight: bold; 
+    -fx-opacity: 1.0; 
+}
+
 
 .slider .track {
     -fx-pref-height: 12px;

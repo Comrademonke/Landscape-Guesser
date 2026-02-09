@@ -30,7 +30,7 @@
             <Font size="19.0" />
          </font>
       </Button>
-      <Label fx:id="titleLabel" alignment="CENTER" layoutX="7.0" layoutY="5.0" prefHeight="171.0" prefWidth="1534.0" stylesheets="@../css/guessingRoom.css" text="Guess the location!" textFill="#00ff44">
+      <Label fx:id="titleLabel" alignment="CENTER" layoutX="7.0" layoutY="5.0" prefHeight="150.0" prefWidth="1534.0" stylesheets="@../css/guessingRoom.css" text="Guess the location!" textFill="#00ff44">
          <font>
             <Font size="100.0" />
          </font>
@@ -40,7 +40,7 @@
             <Font size="19.0" />
          </font>
       </Button>
-       <Label fx:id="distanceLabel" alignment="CENTER" contentDisplay="TOP" layoutY="154.0" prefHeight="160.0" prefWidth="1537.0" textFill="RED">
+       <Label fx:id="distanceLabel" alignment="CENTER" contentDisplay="TOP" disable="true" layoutY="154.0" prefHeight="160.0" prefWidth="1537.0" styleClass="label-info" stylesheets="@../css/guessingRoom.css" textFill="RED">
          <font>
             <Font size="40.0" />
          </font>
